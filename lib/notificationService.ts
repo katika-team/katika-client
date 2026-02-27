@@ -1,13 +1,37 @@
-import messaging from '@react-native-firebase/messaging';
-import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
 import { Platform } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+
+// Conditional imports to avoid errors before native build
+let messaging: any;
+let notifee: any;
+let AndroidImportance: any;
+let EventType: any;
+
+try {
+  messaging = require('@react-native-firebase/messaging').default;
+} catch (error) {
+  console.warn('Firebase Messaging not available - push notifications will not work until native build is complete');
+}
+
+try {
+  const notifeeModule = require('@notifee/react-native');
+  notifee = notifeeModule.default;
+  AndroidImportance = notifeeModule.AndroidImportance;
+  EventType = notifeeModule.EventType;
+} catch (error) {
+  console.warn('Notifee not available - local notifications will not work until native build is complete');
+}
 
 /**
  * Request notification permissions
  */
 export const requestNotificationPermission = async (): Promise<boolean> => {
+  if (!messaging) {
+    console.warn('Firebase Messaging not available - skipping permission request');
+    return false;
+  }
+  
   try {
     if (Platform.OS === 'ios') {
       const authStatus = await messaging().requestPermission();
@@ -18,7 +42,9 @@ export const requestNotificationPermission = async (): Promise<boolean> => {
     }
     
     // Android 13+ requires permission
-    await notifee.requestPermission();
+    if (notifee && notifee.requestPermission) {
+      await notifee.requestPermission();
+    }
     return true;
   } catch (error) {
     console.error('Error requesting notification permission:', error);
@@ -30,6 +56,11 @@ export const requestNotificationPermission = async (): Promise<boolean> => {
  * Get FCM token and save to Firestore
  */
 export const getFCMToken = async (): Promise<string | null> => {
+  if (!messaging) {
+    console.warn('Firebase Messaging not available - skipping FCM token');
+    return null;
+  }
+  
   try {
     const token = await messaging().getToken();
     
@@ -82,6 +113,11 @@ export const displayLocalNotification = async (
   body: string,
   data?: any
 ) => {
+  if (!notifee) {
+    console.warn('Notifee not available - skipping notification');
+    return;
+  }
+  
   try {
     // Create a channel (required for Android)
     const channelId = await notifee.createChannel({
@@ -147,6 +183,11 @@ export const setupReferralNotifications = async () => {
  * Handle foreground messages
  */
 export const setupForegroundMessageHandler = () => {
+  if (!messaging) {
+    console.warn('Firebase Messaging not available - skipping foreground handler');
+    return () => {};
+  }
+  
   return messaging().onMessage(async (remoteMessage) => {
     console.log('Foreground message:', remoteMessage);
     
@@ -164,6 +205,11 @@ export const setupForegroundMessageHandler = () => {
  * Handle background messages
  */
 export const setupBackgroundMessageHandler = () => {
+  if (!messaging) {
+    console.warn('Firebase Messaging not available - skipping background handler');
+    return;
+  }
+  
   messaging().setBackgroundMessageHandler(async (remoteMessage) => {
     console.log('Background message:', remoteMessage);
   });
@@ -173,6 +219,11 @@ export const setupBackgroundMessageHandler = () => {
  * Handle notification tap/press
  */
 export const setupNotificationPressHandler = () => {
+  if (!notifee) {
+    console.warn('Notifee not available - skipping press handler');
+    return () => {};
+  }
+  
   return notifee.onForegroundEvent(({ type, detail }) => {
     if (type === EventType.PRESS) {
       console.log('Notification pressed:', detail.notification);
@@ -209,15 +260,17 @@ export const initializeNotifications = async () => {
     await setupReferralNotifications();
 
     // Listen for token refresh
-    messaging().onTokenRefresh(async (token) => {
-      const user = auth().currentUser;
-      if (user) {
-        await firestore().collection('users').doc(user.uid).update({
-          fcmToken: token,
-          fcmTokenUpdatedAt: firestore.FieldValue.serverTimestamp(),
-        });
-      }
-    });
+    if (messaging) {
+      messaging().onTokenRefresh(async (token) => {
+        const user = auth().currentUser;
+        if (user) {
+          await firestore().collection('users').doc(user.uid).update({
+            fcmToken: token,
+            fcmTokenUpdatedAt: firestore.FieldValue.serverTimestamp(),
+          });
+        }
+      });
+    }
   } catch (error) {
     console.error('Error initializing notifications:', error);
   }
