@@ -375,13 +375,16 @@
         const referralInput = document.getElementById("referralCode");
         const referralGroup = document.getElementById("referralGroup");
 
-        // If there's a referral code in the URL, pre-fill it and make it read-only
-        if (refCode && referralInput) {
-          referralInput.value = refCode;
-          // Make the field visually indicate it's locked
+        // If there's a referral code in the URL, show it in placeholder and hide field
+        if (refCode && referralInput && referralGroup) {
+          // Show referral code in the placeholder text
+          referralInput.placeholder = "Referral Code: " + refCode;
+          // Make it readonly
+          referralInput.readOnly = true;
+          // Visual indication that it's locked
           referralInput.style.backgroundColor = "rgba(59, 72, 185, 0.3)";
           referralInput.style.borderColor = "#3b48b9";
-          console.log("Referral code pre-filled:", refCode);
+          console.log("Referral code shown:", refCode);
         } else if (referralGroup) {
           // If no referral code in URL, hide the entire field
           referralGroup.style.display = "none";
