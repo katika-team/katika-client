@@ -373,6 +373,8 @@
       // Get referral code from URL query parameter
       const urlParams = new URLSearchParams(window.location.search);
       const refCode = urlParams.get("ref");
+      console.log("URL:", window.location.href);
+      console.log("refCode:", refCode);
 
       // Pre-fill the referral code field
       if (refCode) {
