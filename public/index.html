@@ -1,10 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0;url=refer.html" />
     <title>Redirecting...</title>
+    <script>
+      // Preserve query parameters when redirecting
+      var params = window.location.search;
+      window.location.href = "refer.html" + params;
+    </script>
   </head>
   <body>
-    <p>Redirecting to <a href="refer.html">referral page</a>...</p>
+    <p>Redirecting to <a id="link" href="refer.html">referral page</a>...</p>
+    <script>
+      document.getElementById("link").href =
+        "refer.html" + window.location.search;
+    </script>
   </body>
 </html>
