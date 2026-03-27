@@ -1,19 +1,17 @@
 import { useTranslation } from "@/lib/i18n/I18nContext";
 import { fontScale, hp, wp } from "@/lib/ui/responsive";
-import { useUser } from "@/lib/userContext";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
-  Image,
   ImageBackground,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -120,7 +118,6 @@ const matchHistory = [
 
 export default function Events() {
   const router = useRouter();
-  const { userData } = useUser();
   const { t } = useTranslation();
 
   // Helper function to get rank badge image

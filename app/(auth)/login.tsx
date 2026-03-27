@@ -1,8 +1,4 @@
-import { signInWithApple, signInWithGoogle } from "@/lib/authService";
 import { useTranslation } from "@/lib/i18n/I18nContext";
-import { getCurrentUser, signInWithUsername } from "@/lib/supabaseAuthService";
-
-import { useUser } from "@/lib/userContext";
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -37,13 +33,11 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
 
-  const { setUserData, addNotification } = useUser();
-
   const handleGoogleSignIn = async () => {
     try {
       setLoading(true);
-      await signInWithGoogle();
-      // Note: OAuth redirect will handle setting user data in callback
+      // TODO: Implement Google sign in when auth system is ready
+      Alert.alert("Coming Soon", "Google sign in will be available soon");
     } catch (error: any) {
       Alert.alert("Error", error.message || "Failed to sign in with Google");
     } finally {
@@ -54,8 +48,8 @@ export default function Login() {
   const handleAppleSignIn = async () => {
     try {
       setLoading(true);
-      await signInWithApple();
-      // Note: OAuth redirect will handle setting user data in callback
+      // TODO: Implement Apple sign in when auth system is ready
+      Alert.alert("Coming Soon", "Apple sign in will be available soon");
     } catch (error: any) {
       Alert.alert("Error", error.message || "Failed to sign in with Apple");
     } finally {
@@ -74,34 +68,8 @@ export default function Login() {
     }
     try {
       setLoginLoading(true);
-      await signInWithUsername(username.trim(), password);
-
-      // Sync user data to UserContext after login
-      const user = await getCurrentUser();
-      if (user) {
-        setUserData({
-          id: user.id,
-          username: user.username,
-          email: user.username + "@skibag.app", // Create fake email since we don't have one
-          avatarUri: user.avatar_url || null,
-          rank: user.rank || "beginner",
-          score: user.coins || 0,
-          day_streak: user.day_streak || 0,
-          last_streak_date: user.last_streak_date || undefined,
-        });
-
-        // Add welcome back notification
-        addNotification(
-          "login",
-          `Welcome back, ${user.username}!`,
-          "Great to see you again. Ready to play?",
-        );
-      }
-
-      // Small delay to ensure userData is set before navigation
-      setTimeout(() => {
-        router.replace("/(tabs)");
-      }, 500);
+      // TODO: Implement username login when auth system is ready
+      Alert.alert("Coming Soon", "Username login will be available soon");
     } catch (error: any) {
       Alert.alert(t("login"), error.message || t("invalid_password"));
     } finally {

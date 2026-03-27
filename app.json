@@ -50,7 +50,9 @@
       ],
       "expo-font",
       "expo-video",
-      "expo-dev-client"
+      "expo-dev-client",
+      "expo-localization",
+      "react-native-bootsplash"
     ],
     "experiments": {
       "typedRoutes": true,

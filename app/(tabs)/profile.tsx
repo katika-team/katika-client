@@ -1,15 +1,6 @@
 import { Avatar } from "@/constant/Avatar";
+import { hasSubmittedFeedbackToday, submitFeedback } from "@/lib/supabaseFeedbackService";
 import { hp, wp } from "@/lib/ui/responsive";
-import {
-  convertReferralPointsToCoins,
-  getUserBadges,
-  getUserReferralStats,
-  signOut,
-  updateUserAvatar,
-  deleteUserAccount,
-} from "@/lib/supabaseAuthService";
-import { submitFeedback, hasSubmittedFeedbackToday } from "@/lib/supabaseFeedbackService";
-import { useUser } from "@/lib/userContext";
 import { Ionicons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import { ImageBackground } from "expo-image";
@@ -58,7 +49,7 @@ const DEFAULT_AVATAR_ID = 3;
 
 export default function Profile() {
   const router = useRouter();
-  const { userData, setUserData } = useUser();
+  const { userData, setUserData } = useUserStore();
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [tempSelectedAvatar, setTempSelectedAvatar] = useState(null);
@@ -125,18 +116,12 @@ export default function Profile() {
       if (!userData?.id) return;
 
       try {
-        // Get referral stats
-        const { referrals_count, referral_points } = await getUserReferralStats(
-          userData.id,
-        );
-
-        // Get badges
-        const badges = await getUserBadges(userData.id);
-
+        // TODO: implement when auth system is ready
+        console.log("Fetching user stats - using placeholder data");
         setUserStats({
-          referrals: referrals_count,
-          referralPoints: referral_points,
-          badges: badges,
+          referrals: 0,
+          referralPoints: 0,
+          badges: [],
         });
       } catch (error) {
         console.log("Error fetching user stats:", error);

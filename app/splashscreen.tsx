@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/supabaseAuthService";
+import { supabase } from "@/lib/supabase/client";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import * as ExpoSplashScreen from "expo-splash-screen";
@@ -61,8 +61,8 @@ export default function SplashScreenPage() {
       const timer = setTimeout(async () => {
         setHasNavigated(true);
 
-        // Check if user is already authenticated using custom auth
-        const user = await getCurrentUser();
+        // Check if user is already authenticated
+        const { data: { user } } = await supabase.auth.getUser();
 
         if (user) {
           // User is logged in, go to tabs (home)

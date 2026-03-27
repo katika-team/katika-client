@@ -1,7 +1,4 @@
-import { signInWithApple, signInWithGoogle } from "@/lib/authService";
 import { useTranslation } from "@/lib/i18n/I18nContext";
-import { getCurrentUser, signUpWithUsername } from "@/lib/supabaseAuthService";
-import { useUser } from "@/lib/userContext";
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -25,7 +22,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Signup() {
   const { t } = useTranslation();
-  const { setUserData, addNotification } = useUser();
   const [loading, setLoading] = useState(false);
   const [signupLoading, setSignupLoading] = useState(false);
 
@@ -83,36 +79,8 @@ export default function Signup() {
     if (!validate()) return;
     try {
       setSignupLoading(true);
-      // Use manual referral code from input field only
-      await signUpWithUsername(username.trim(), password, referralCode);
-
-      // Sync user data to UserContext after signup
-      const user = await getCurrentUser();
-      if (user) {
-        setUserData({
-          id: user.id,
-          username: user.username,
-          email: user.username + "@skibag.app",
-          avatarUri: user.avatar_url || null,
-          rank: user.rank || "beginner",
-          score: user.coins || 0,
-          day_streak: user.day_streak || 1,
-          last_streak_date: user.last_streak_date || undefined,
-        });
-
-        // Add welcome notification
-        addNotification(
-          "signup",
-          `Welcome, ${user.username}!`,
-          "Your account has been created successfully. Enjoy the game!",
-        );
-      }
-
-      // Small delay to ensure userData is set before navigation
-      setTimeout(() => {
-        // Navigate immediately after successful signup
-        router.replace("/(tabs)");
-      }, 500);
+      // TODO: Implement signup when auth system is ready
+      Alert.alert("Coming Soon", "Account signup will be available soon");
     } catch (e: any) {
       Alert.alert(t("error"), e.message || t("signup_error"));
     } finally {
@@ -123,8 +91,8 @@ export default function Signup() {
   const handleGoogle = async () => {
     try {
       setLoading(true);
-      await signInWithGoogle();
-      // Note: OAuth redirect will handle setting user data in callback
+      // TODO: Implement Google sign in when auth system is ready
+      Alert.alert("Coming Soon", "Google sign in will be available soon");
     } catch (e: any) {
       Alert.alert(t("error"), t("google_signin_error"));
     } finally {
@@ -135,8 +103,8 @@ export default function Signup() {
   const handleApple = async () => {
     try {
       setLoading(true);
-      await signInWithApple();
-      // Note: OAuth redirect will handle setting user data in callback
+      // TODO: Implement Apple sign in when auth system is ready
+      Alert.alert("Coming Soon", "Apple sign in will be available soon");
     } catch (e: any) {
       Alert.alert(t("error"), t("apple_signin_error"));
     } finally {

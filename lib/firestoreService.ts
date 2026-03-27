@@ -1,5 +1,4 @@
 import { supabase } from "./supabase/client";
-import { getCurrentUser } from "./supabaseAuthService";
 
 // Constants for points and coins system
 const POINTS_PER_REFERRAL = 100;
@@ -8,7 +7,7 @@ const WELCOME_BONUS_COINS = 50;
 
 // ─── Helper: get current user id ─────────────────────────────────────────────
 const getCurrentUserId = async (): Promise<string> => {
-  const user = await getCurrentUser();
+  const { data: { user } } = await supabase.auth.getUser();
   if (!user) throw new Error("User not authenticated");
   return user.id;
 };
