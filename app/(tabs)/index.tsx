@@ -1,7 +1,7 @@
 import { Games } from "@/constant/games";
-import { useTranslation } from "@/lib/I18nContext";
-import { fontScale, hp, wp } from "@/lib/responsive";
-import { supabase } from "@/lib/supabase";
+import { useTranslation } from "@/lib/i18n/I18nContext";
+import { fontScale, hp, wp } from "@/lib/ui/responsive";
+import { supabase } from "@/lib/supabase/client";
 import {
   checkAndUpdateStreak,
   getCurrentUser,

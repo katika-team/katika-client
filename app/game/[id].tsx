@@ -1,18 +1,18 @@
 import { Games } from "@/constant/games";
-import { useTranslation } from "@/lib/I18nContext";
-import { fontScale, hp, wp } from "@/lib/responsive";
+import { useTranslation } from "@/lib/i18n/I18nContext";
+import { fontScale, hp, wp } from "@/lib/ui/responsive";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import {
-  ImageBackground,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ImageBackground,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 

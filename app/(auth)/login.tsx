@@ -1,5 +1,5 @@
 import { signInWithApple, signInWithGoogle } from "@/lib/authService";
-import { useTranslation } from "@/lib/I18nContext";
+import { useTranslation } from "@/lib/i18n/I18nContext";
 import { getCurrentUser, signInWithUsername } from "@/lib/supabaseAuthService";
 
 import { useUser } from "@/lib/userContext";

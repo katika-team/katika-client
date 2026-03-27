@@ -1,5 +1,5 @@
-import { useTranslation } from "@/lib/I18nContext";
-import { fontScale, hp, wp } from "@/lib/responsive";
+import { useTranslation } from "@/lib/i18n/I18nContext";
+import { fontScale, hp, wp } from "@/lib/ui/responsive";
 import { useUser } from "@/lib/userContext";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";

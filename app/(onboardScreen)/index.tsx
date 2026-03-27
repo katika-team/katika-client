@@ -1,5 +1,5 @@
 import Slides from "@/constant/onboardSlides";
-import { useTranslation } from "@/lib/I18nContext";
+import { useTranslation } from "@/lib/i18n/I18nContext";
 import { Ionicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import { useFonts } from "expo-font";

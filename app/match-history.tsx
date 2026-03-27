@@ -1,5 +1,5 @@
-import { useTranslation } from "@/lib/I18nContext";
-import { fontScale, hp, wp } from "@/lib/responsive";
+import { useTranslation } from "@/lib/i18n/I18nContext";
+import { fontScale, hp, wp } from "@/lib/ui/responsive";
 import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
 import React, { useState } from "react";

@@ -1,6 +1,6 @@
 import { AuthProvider, useAuth } from "@/lib/authContext";
-import { I18nProvider } from "@/lib/I18nContext";
-import { initializeNotifications } from "@/lib/notificationService";
+import { I18nProvider } from "@/lib/i18n/I18nContext";
+import { initializeNotifications } from "@/lib/notifications/notifications";
 import { UserProvider } from "@/lib/userContext";
 import { Stack, router } from "expo-router";
 import { useEffect, useState } from "react";

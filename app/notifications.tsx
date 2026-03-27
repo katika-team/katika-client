@@ -1,4 +1,4 @@
-import { fontScale, hp, wp } from "@/lib/responsive";
+import { fontScale, hp, wp } from "@/lib/ui/responsive";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";

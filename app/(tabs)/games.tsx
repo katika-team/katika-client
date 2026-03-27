@@ -1,5 +1,5 @@
 import { Games } from "@/constant/games";
-import { useTranslation } from "@/lib/I18nContext";
+import { useTranslation } from "@/lib/i18n/I18nContext";
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";

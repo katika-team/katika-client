@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { supabase } from "./supabase/client";
 import { getCurrentUser } from "./supabaseAuthService";
 
 // Constants for points and coins system

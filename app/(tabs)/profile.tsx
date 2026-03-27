@@ -1,5 +1,5 @@
 import { Avatar } from "@/constant/Avatar";
-import { hp, wp } from "@/lib/responsive";
+import { hp, wp } from "@/lib/ui/responsive";
 import {
   convertReferralPointsToCoins,
   getUserBadges,

@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase/client";
 import { useUser } from "@/lib/userContext";
 import * as Linking from "expo-linking";
 import { router } from "expo-router";
