@@ -1,31 +1,25 @@
 import { I18nProvider } from "@/lib/i18n/I18nContext";
 import { initializeNotifications } from "@/lib/notifications/notifications";
+import { useAuthStore } from "@/store/authStore";
 import { Stack, router } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function RootNavigator() {
-  const [isReady, setIsReady] = useState(false);
-  const [hasNavigated, setHasNavigated] = useState(false);
+  const { user, loading, initialize } = useAuthStore();
 
-  // Wait for splash screen time to display
   useEffect(() => {
-    // Give splash screen time to display (2 seconds minimum)
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
+    initialize();
   }, []);
 
-  // Navigate once ready
   useEffect(() => {
-    if (!isReady || hasNavigated) return;
-
-    // For now, navigate to main tabs
-    setHasNavigated(true);
-    router.replace("/(tabs)");
-    initializeNotifications().catch(console.error);
-  }, [isReady, hasNavigated]);
+    if (loading) return;
+    if (user) {
+      router.replace("/(tabs)");
+      initializeNotifications().catch(console.error);
+    } else {
+      router.replace("/(auth)/login");
+    }
+  }, [user, loading]);
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
@@ -41,7 +35,6 @@ function RootNavigator() {
       <Stack.Screen name="(auth)" />
       <Stack.Screen name="splashscreen" />
       <Stack.Screen name="(passkey)" />
-      
     </Stack>
   );
 }

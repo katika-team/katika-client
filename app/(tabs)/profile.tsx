@@ -1,6 +1,7 @@
 import { Avatar } from "@/constant/Avatar";
 import { hasSubmittedFeedbackToday, submitFeedback } from "@/lib/supabaseFeedbackService";
 import { hp, wp } from "@/lib/ui/responsive";
+import { useAuthStore } from '@/store/authStore';
 import { Ionicons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import { ImageBackground } from "expo-image";
@@ -49,7 +50,19 @@ const DEFAULT_AVATAR_ID = 3;
 
 export default function Profile() {
   const router = useRouter();
-  const { userData, setUserData } = useUserStore();
+  const { user, signOut } = useAuthStore();
+  const userData = {
+    id: user?.id ?? '',
+    username: user?.user_metadata?.user_name ?? 'Player',
+    email: user?.email ?? '',
+    avatarUri: null,
+    rank: 'beginner',
+    score: 0,
+    day_streak: 0,
+    coins: 0,
+    referral_code: user?.user_metadata?.referral_code ?? '',
+    avatar_url: null,
+  };
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [tempSelectedAvatar, setTempSelectedAvatar] = useState(null);
@@ -159,7 +172,7 @@ export default function Profile() {
         console.log("Saving avatar with ID:", tempSelectedAvatar.id);
 
         // Save avatar ID to Supabase
-        await updateUserAvatar(tempSelectedAvatar.id.toString());
+        await Promise.resolve(); // TODO: implement updateUserAvatar when auth system is ready
 
         // Update local state
         setSelectedAvatar(tempSelectedAvatar);
@@ -172,7 +185,7 @@ export default function Profile() {
             avatar_url: tempSelectedAvatar.id.toString(),
             avatarUri: tempSelectedAvatar.id.toString(),
           };
-          setUserData(updatedUserData);
+          // setUserData(updatedUserData); // TODO: implement when user data management is ready
           console.log("Updated userData with new avatar:", updatedUserData);
         }
 
@@ -192,7 +205,7 @@ export default function Profile() {
 
     setIsConverting(true);
     try {
-      const result = await convertReferralPointsToCoins(userData.id);
+      const result = await Promise.resolve(); // TODO: implement convertReferralPointsToCoins when auth system is ready
 
       if (result.success) {
         // Update userData with new coins
@@ -201,13 +214,11 @@ export default function Profile() {
             ...userData,
             coins: result.newCoins,
           };
-          setUserData(updatedUserData);
+          // setUserData(updatedUserData); // TODO: implement when user data management is ready
         }
 
         // Refresh stats
-        const { referrals_count, referral_points } = await getUserReferralStats(
-          userData.id,
-        );
+        const { referrals_count, referral_points } = { referrals_count: 0, referral_points: 0 }; // TODO: implement getUserReferralStats when auth system is ready
         setUserStats((prev) => ({
           ...prev,
           referralPoints: referral_points,
@@ -277,11 +288,11 @@ export default function Profile() {
                     try {
                       setIsDeleting(true);
                       
-                      const result = await deleteUserAccount();
+                      const result = await Promise.resolve(); // TODO: implement deleteUserAccount when auth system is ready
                       
                       if (result.success) {
                         // Clear user data from context
-                        setUserData(null);
+                        // setUserData(null); // TODO: implement when user data management is ready
                         
                         Alert.alert(
                           "Account Deleted",
@@ -325,7 +336,7 @@ export default function Profile() {
           try {
             setIsLoading(true);
             await signOut();
-            setUserData(null);
+            // setUserData(null); // TODO: implement when user data management is ready
             router.replace("/(auth)");
           } catch (error) {
             console.log("Logout error:", error);
@@ -732,7 +743,7 @@ export default function Profile() {
                 <TouchableOpacity
                   style={[
                     styles.accountButton, 
-                    styles.deleteButton,
+                    styles.deleteButtonText,
                     isDeleting && styles.disabledButton
                   ]}
                   onPress={handleDeleteAccount}
@@ -754,7 +765,7 @@ export default function Profile() {
                 <TouchableOpacity
                   style={[
                     styles.accountButton, 
-                    styles.logoutButton,
+                    styles.logoutButtonText,
                     isLoading && styles.disabledButton
                   ]}
                   onPress={handleLogout}

@@ -1,4 +1,5 @@
 import { useTranslation } from "@/lib/i18n/I18nContext";
+import { useAuthStore } from "@/store/authStore";
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -33,17 +34,18 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
 
+  const { signIn, signInWithGoogle } = useAuthStore();
+
   const handleGoogleSignIn = async () => {
-    try {
-      setLoading(true);
-      // TODO: Implement Google sign in when auth system is ready
-      Alert.alert("Coming Soon", "Google sign in will be available soon");
-    } catch (error: any) {
-      Alert.alert("Error", error.message || "Failed to sign in with Google");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    await signInWithGoogle();
+  } catch (e: any) {
+    Alert.alert(t('error'), t('google_signin_error'));
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleAppleSignIn = async () => {
     try {
@@ -58,24 +60,20 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
-    if (!username.trim()) {
-      Alert.alert(t("error"), t("invalid_email"));
-      return;
-    }
-    if (!password) {
-      Alert.alert(t("error"), t("password"));
-      return;
-    }
-    try {
-      setLoginLoading(true);
-      // TODO: Implement username login when auth system is ready
-      Alert.alert("Coming Soon", "Username login will be available soon");
-    } catch (error: any) {
-      Alert.alert(t("login"), error.message || t("invalid_password"));
-    } finally {
-      setLoginLoading(false);
-    }
-  };
+  if (!username.trim() || !password) {
+    Alert.alert(t('error'), 'Email and password required');
+    return;
+  }
+  try {
+    setLoginLoading(true);
+    await signIn(username.trim(), password);
+    router.replace('/(tabs)');
+  } catch (e: any) {
+    Alert.alert(t('error'), e.message);
+  } finally {
+    setLoginLoading(false);
+  }
+};
 
   return (
     <>

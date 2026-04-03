@@ -72,7 +72,7 @@ export default function Index() {
       resizeMode="cover"
     >
       <LinearGradient
-        colors={item.gradient as string[]}
+        colors={item.gradient as readonly [import('react-native').ColorValue, import('react-native').ColorValue, ...import('react-native').ColorValue[]]}
         start={{ x: 0.2, y: 0.3 }}
         end={{ x: 0.1, y: 1 }}
         style={{

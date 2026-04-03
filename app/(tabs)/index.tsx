@@ -2,6 +2,7 @@ import { Games } from "@/constant/games";
 import { useTranslation } from "@/lib/i18n/I18nContext";
 import { supabase } from "@/lib/supabase/client";
 import { fontScale, hp, wp } from "@/lib/ui/responsive";
+import { useAuthStore } from '@/store/authStore';
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -40,7 +41,17 @@ export default function Index() {
   const router = useRouter();
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const { userData, unreadCount, setUserData } = useUserStore();
+  const { user } = useAuthStore();
+  const userData = {
+    id: user?.id ?? '',
+    username: user?.user_metadata?.user_name ?? 'Player',
+    email: user?.email ?? '',
+    rank: 'beginner',
+    score: 0,
+    day_streak: 0,
+    coins: 0,
+  };
+  const unreadCount = 0;
   const [isLoading, setIsLoading] = useState(true);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
@@ -57,7 +68,9 @@ export default function Index() {
       setInitialLoadComplete(true);
       console.log("Loading complete, userData:", userData);
     }
-  }, [setUserData]);
+  }, [
+    
+  ]);
 
   // Initial fetch on mount
   useEffect(() => {

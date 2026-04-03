@@ -61,7 +61,7 @@
 //                   name="index"
 //                   options={{
 //                     tabBarLabel: "Home",
-//                     tabBarIcon: ({ size, color, focused }) => {
+//                     tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
 //                       return (
 //                         <Ionicons
 //                           name={focused ? "home" : "home-outline"}
@@ -76,7 +76,7 @@
 //                   name="games"
 //                   options={{
 //                     tabBarLabel: "Games",
-//                     tabBarIcon: ({ size, color, focused }) => {
+//                     tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
 //                       return (
 //                         <Ionicons
 //                           name={
@@ -95,7 +95,7 @@
 //                   name="wallet"
 //                   options={{
 //                     tabBarLabel: () => null,
-//                     tabBarButton: (props) => (
+//                     tabBarButton: (props: any) => (
 //                       <TouchableOpacity
 //                         {...props}
 //                         style={{
@@ -133,7 +133,7 @@
 //                   name="events"
 //                   options={{
 //                     tabBarLabel: "Events",
-//                     tabBarIcon: ({ size, color, focused }) => {
+//                     tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
 //                       return (
 //                         <Ionicons
 //                           name={focused ? "trophy" : "trophy-outline"}
@@ -148,7 +148,7 @@
 //                   name="profile"
 //                   options={{
 //                     tabBarLabel: "Profile",
-//                     tabBarIcon: ({ size, color, focused }) => {
+//                     tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
 //                       return (
 //                         <Ionicons
 //                           name={focused ? "person" : "person-outline"}
@@ -187,8 +187,8 @@ import { Tabs } from "expo-router";
 import React from "react";
 import {
   ImageBackground,
-  StyleSheet,
   Pressable,
+  StyleSheet,
   View,
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
@@ -243,7 +243,7 @@ export default function _layout() {
                   name="index"
                   options={{
                     tabBarLabel: "Home",
-                    tabBarIcon: ({ size, color, focused }) => {
+                    tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
                       return (
                         <Ionicons
                           name={focused ? "home" : "home-outline"}
@@ -258,7 +258,7 @@ export default function _layout() {
                   name="games"
                   options={{
                     tabBarLabel: "Games",
-                    tabBarIcon: ({ size, color, focused }) => {
+                    tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
                       return (
                         <Ionicons
                           name={
@@ -277,7 +277,7 @@ export default function _layout() {
                   name="wallet"
                   options={{
                     tabBarLabel: () => null,
-                    tabBarButton: (props) => (
+                    tabBarButton: (props: any) => (
                       <Pressable
                         onPress={props.onPress ?? undefined}
                         style={{
@@ -315,7 +315,7 @@ export default function _layout() {
                   name="events"
                   options={{
                     tabBarLabel: "Events",
-                    tabBarIcon: ({ size, color, focused }) => {
+                    tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
                       return (
                         <Ionicons
                           name={focused ? "trophy" : "trophy-outline"}
@@ -330,7 +330,7 @@ export default function _layout() {
                   name="profile"
                   options={{
                     tabBarLabel: "Profile",
-                    tabBarIcon: ({ size, color, focused }) => {
+                    tabBarIcon: ({ size, color, focused }: { size: number; color: string; focused: boolean }) => {
                       return (
                         <Ionicons
                           name={focused ? "person" : "person-outline"}

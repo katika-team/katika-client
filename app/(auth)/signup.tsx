@@ -1,4 +1,5 @@
 import { useTranslation } from "@/lib/i18n/I18nContext";
+import { useAuthStore } from "@/store/authStore";
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -34,6 +35,8 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+
+  const { signUp, signInWithGoogle } = useAuthStore();
 
   // Validation errors
   const [errors, setErrors] = useState<{
@@ -79,26 +82,28 @@ export default function Signup() {
     if (!validate()) return;
     try {
       setSignupLoading(true);
-      // TODO: Implement signup when auth system is ready
-      Alert.alert("Coming Soon", "Account signup will be available soon");
+      // Create email from username since no email field exists
+      const email = `${username}@skibag.app`;
+      await signUp(email, password, username);
+      Alert.alert('Check your email', 'Confirm your account then log in.');
+      router.replace('/(auth)/login');
     } catch (e: any) {
-      Alert.alert(t("error"), e.message || t("signup_error"));
+      Alert.alert(t('error'), e.message || t('signup_error'));
     } finally {
       setSignupLoading(false);
     }
   };
 
   const handleGoogle = async () => {
-    try {
-      setLoading(true);
-      // TODO: Implement Google sign in when auth system is ready
-      Alert.alert("Coming Soon", "Google sign in will be available soon");
-    } catch (e: any) {
-      Alert.alert(t("error"), t("google_signin_error"));
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    await signInWithGoogle();
+  } catch (e: any) {
+    Alert.alert(t('error'), t('google_signin_error'));
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleApple = async () => {
     try {
