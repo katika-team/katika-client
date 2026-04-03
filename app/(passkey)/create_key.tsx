@@ -1,4 +1,3 @@
-import { signUpWithUsername } from "@/lib/supabaseAuthService";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -79,17 +78,12 @@ export default function CreateKey() {
     if (!isFormValid) return;
     try {
       setSubmitting(true);
-      await signUpWithUsername(username.trim(), password);
-      Alert.alert(
-        "Account Created",
-        "Your account has been created! Please sign in.",
-        [{ text: "OK", onPress: () => router.push("/(auth)/login") }],
-      );
+      // TODO: implement signup when auth is ready
+      Alert.alert("Coming Soon", "Account creation will be available soon", [
+        { text: "OK", onPress: () => router.push("/(auth)/login") },
+      ]);
     } catch (e: any) {
-      Alert.alert(
-        "Sign Up Failed",
-        e.message || "Something went wrong. Please try again.",
-      );
+      Alert.alert("Sign Up Failed", e.message || "Something went wrong.");
     } finally {
       setSubmitting(false);
     }

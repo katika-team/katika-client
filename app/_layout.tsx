@@ -1,40 +1,25 @@
-import { AuthProvider, useAuth } from "@/lib/authContext";
 import { I18nProvider } from "@/lib/i18n/I18nContext";
 import { initializeNotifications } from "@/lib/notifications/notifications";
-import { UserProvider } from "@/lib/userContext";
+import { useAuthStore } from "@/store/authStore";
 import { Stack, router } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 function RootNavigator() {
-  const { user, loading } = useAuth();
-  const [isReady, setIsReady] = useState(false);
-  const [hasNavigated, setHasNavigated] = useState(false);
+  const { user, loading, initialize } = useAuthStore();
 
-  // Wait for auth to be ready AND give splash screen time to display
+  useEffect(() => {
+    initialize();
+  }, []);
+
   useEffect(() => {
     if (loading) return;
-
-    // Give splash screen time to display (2 seconds minimum)
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [loading]);
-
-  // Navigate once ready
-  useEffect(() => {
-    if (!isReady || hasNavigated) return;
-
     if (user) {
-      setHasNavigated(true);
       router.replace("/(tabs)");
       initializeNotifications().catch(console.error);
     } else {
-      setHasNavigated(true);
-      router.replace("/");
+      router.replace("/(auth)/login");
     }
-  }, [isReady, user, hasNavigated]);
+  }, [user, loading]);
 
   return (
     <Stack screenOptions={{ headerShown: false }}>
@@ -50,7 +35,6 @@ function RootNavigator() {
       <Stack.Screen name="(auth)" />
       <Stack.Screen name="splashscreen" />
       <Stack.Screen name="(passkey)" />
-      
     </Stack>
   );
 }
@@ -58,11 +42,7 @@ function RootNavigator() {
 export default function RootLayout() {
   return (
     <I18nProvider>
-      <AuthProvider>
-        <UserProvider>
-          <RootNavigator />
-        </UserProvider>
-      </AuthProvider>
+      <RootNavigator />
     </I18nProvider>
   );
 }

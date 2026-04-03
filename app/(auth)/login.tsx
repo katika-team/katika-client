@@ -1,8 +1,5 @@
-import { signInWithApple, signInWithGoogle } from "@/lib/authService";
 import { useTranslation } from "@/lib/i18n/I18nContext";
-import { getCurrentUser, signInWithUsername } from "@/lib/supabaseAuthService";
-
-import { useUser } from "@/lib/userContext";
+import { useAuthStore } from "@/store/authStore";
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -37,25 +34,24 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
 
-  const { setUserData, addNotification } = useUser();
+  const { signIn, signInWithGoogle } = useAuthStore();
 
   const handleGoogleSignIn = async () => {
-    try {
-      setLoading(true);
-      await signInWithGoogle();
-      // Note: OAuth redirect will handle setting user data in callback
-    } catch (error: any) {
-      Alert.alert("Error", error.message || "Failed to sign in with Google");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    setLoading(true);
+    await signInWithGoogle();
+  } catch (e: any) {
+    Alert.alert(t('error'), t('google_signin_error'));
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleAppleSignIn = async () => {
     try {
       setLoading(true);
-      await signInWithApple();
-      // Note: OAuth redirect will handle setting user data in callback
+      // TODO: Implement Apple sign in when auth system is ready
+      Alert.alert("Coming Soon", "Apple sign in will be available soon");
     } catch (error: any) {
       Alert.alert("Error", error.message || "Failed to sign in with Apple");
     } finally {
@@ -64,50 +60,20 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
-    if (!username.trim()) {
-      Alert.alert(t("error"), t("invalid_email"));
-      return;
-    }
-    if (!password) {
-      Alert.alert(t("error"), t("password"));
-      return;
-    }
-    try {
-      setLoginLoading(true);
-      await signInWithUsername(username.trim(), password);
-
-      // Sync user data to UserContext after login
-      const user = await getCurrentUser();
-      if (user) {
-        setUserData({
-          id: user.id,
-          username: user.username,
-          email: user.username + "@skibag.app", // Create fake email since we don't have one
-          avatarUri: user.avatar_url || null,
-          rank: user.rank || "beginner",
-          score: user.coins || 0,
-          day_streak: user.day_streak || 0,
-          last_streak_date: user.last_streak_date || undefined,
-        });
-
-        // Add welcome back notification
-        addNotification(
-          "login",
-          `Welcome back, ${user.username}!`,
-          "Great to see you again. Ready to play?",
-        );
-      }
-
-      // Small delay to ensure userData is set before navigation
-      setTimeout(() => {
-        router.replace("/(tabs)");
-      }, 500);
-    } catch (error: any) {
-      Alert.alert(t("login"), error.message || t("invalid_password"));
-    } finally {
-      setLoginLoading(false);
-    }
-  };
+  if (!username.trim() || !password) {
+    Alert.alert(t('error'), 'Email and password required');
+    return;
+  }
+  try {
+    setLoginLoading(true);
+    await signIn(username.trim(), password);
+    router.replace('/(tabs)');
+  } catch (e: any) {
+    Alert.alert(t('error'), e.message);
+  } finally {
+    setLoginLoading(false);
+  }
+};
 
   return (
     <>

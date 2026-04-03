@@ -3,7 +3,7 @@ type Slide = {
   titleKey: string;
   descriptionKey: string;
   backgroundImage: any;
-  gradient: readonly string[];
+  gradient: readonly [string, string, ...string[]];
 };
 
 const Slides: Slide[] = [

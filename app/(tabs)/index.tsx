@@ -1,18 +1,15 @@
 import { Games } from "@/constant/games";
 import { useTranslation } from "@/lib/i18n/I18nContext";
-import { fontScale, hp, wp } from "@/lib/ui/responsive";
 import { supabase } from "@/lib/supabase/client";
-import {
-  checkAndUpdateStreak,
-  getCurrentUser,
-} from "@/lib/supabaseAuthService";
-import { useUser } from "@/lib/userContext";
+import { fontScale, hp, wp } from "@/lib/ui/responsive";
+import { useAuthStore } from '@/store/authStore';
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   ImageBackground,
   ScrollView,
   StatusBar,
@@ -20,7 +17,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -45,7 +41,17 @@ export default function Index() {
   const router = useRouter();
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const { userData, unreadCount, setUserData } = useUser();
+  const { user } = useAuthStore();
+  const userData = {
+    id: user?.id ?? '',
+    username: user?.user_metadata?.user_name ?? 'Player',
+    email: user?.email ?? '',
+    rank: 'beginner',
+    score: 0,
+    day_streak: 0,
+    coins: 0,
+  };
+  const unreadCount = 0;
   const [isLoading, setIsLoading] = useState(true);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
 
@@ -53,82 +59,8 @@ export default function Index() {
   const fetchUserData = useCallback(async () => {
     try {
       console.log("Fetching user data...");
-      
-      // First try to get user from custom auth service
-      const currentUser = await getCurrentUser();
-      if (currentUser?.username) {
-        console.log("User found in storage:", currentUser.username);
-        setUserData({
-          id: currentUser.id,
-          username: currentUser.username,
-          email: currentUser.username + "@skibag.app",
-          avatarUri: currentUser.avatar_url || null,
-          rank: currentUser.rank || "beginner",
-          score: currentUser.coins || 0,
-          day_streak: currentUser.day_streak || 0,
-          last_streak_date: currentUser.last_streak_date || undefined,
-        });
-
-        // Check and update streak in background
-        try {
-          const streakResult = await checkAndUpdateStreak(currentUser.id);
-          if (streakResult.isNewStreak) {
-            setUserData((prev) => ({
-              ...prev,
-              day_streak: streakResult.day_streak,
-              last_streak_date: new Date().toISOString().split("T")[0],
-            }));
-          }
-        } catch (streakError) {
-          console.log("Error checking streak:", streakError);
-        }
-        return;
-      }
-
-      // Fallback: try Supabase auth session
-      console.log("No user in storage, checking Supabase session...");
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      
-      if (session?.user) {
-        console.log("Supabase session found for user:", session.user.id);
-        const { data: userData } = await supabase
-          .from("users")
-          .select("*")
-          .eq("id", session.user.id)
-          .single();
-
-        if (userData) {
-          console.log("User data from Supabase:", userData.username);
-          setUserData({
-            id: userData.id,
-            username: userData.username,
-            email: userData.email || session.user.email,
-            avatarUri: userData.avatar_url || null,
-            rank: userData.rank || "beginner",
-            score: userData.coins || 0,
-            day_streak: userData.day_streak || 0,
-            last_streak_date: userData.last_streak_date || undefined,
-          });
-
-          // Check and update streak
-          try {
-            const streakResult = await checkAndUpdateStreak(userData.id);
-            if (streakResult.isNewStreak) {
-              setUserData((prev) => ({
-                ...prev,
-                day_streak: streakResult.day_streak,
-                last_streak_date: new Date().toISOString().split("T")[0],
-              }));
-            }
-          } catch (streakError) {
-            console.log("Error checking streak:", streakError);
-          }
-        }
-      } else {
-        console.log("No active session found");
-      }
+      // TODO: implement when auth system is ready
+      console.log("Using temporary user data from store");
     } catch (error) {
       console.log("Error fetching user data:", error);
     } finally {
@@ -136,7 +68,9 @@ export default function Index() {
       setInitialLoadComplete(true);
       console.log("Loading complete, userData:", userData);
     }
-  }, [setUserData]);
+  }, [
+    
+  ]);
 
   // Initial fetch on mount
   useEffect(() => {
