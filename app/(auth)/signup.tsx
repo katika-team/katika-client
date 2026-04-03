@@ -31,16 +31,18 @@ export default function Signup() {
 
   // Form fields
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const { signUp, signInWithGoogle } = useAuthStore();
+  const { signUp } = useAuthStore();
 
   // Validation errors
   const [errors, setErrors] = useState<{
     username?: string;
+    email?: string;
     password?: string;
     confirmPassword?: string;
     referralCode?: string;
@@ -67,6 +69,9 @@ export default function Signup() {
     if (!username.trim() || username.trim().length < 3) {
       newErrors.username = t("username_min_length");
     }
+    if (!email.trim() || !email.includes('@')) {
+      newErrors.email = 'Valid email is required';
+    }
     if (!isPasswordValid) {
       newErrors.password = t("password_requirements");
     }
@@ -83,10 +88,8 @@ export default function Signup() {
     try {
       setSignupLoading(true);
       // Create email from username since no email field exists
-      const email = `${username}@skibag.app`;
-      await signUp(email, password, username);
-      Alert.alert('Check your email', 'Confirm your account then log in.');
-      router.replace('/(auth)/login');
+      await signUp(email.trim(), password, username);
+      router.replace('/(tabs)');
     } catch (e: any) {
       Alert.alert(t('error'), e.message || t('signup_error'));
     } finally {
@@ -95,15 +98,8 @@ export default function Signup() {
   };
 
   const handleGoogle = async () => {
-  try {
-    setLoading(true);
-    await signInWithGoogle();
-  } catch (e: any) {
-    Alert.alert(t('error'), t('google_signin_error'));
-  } finally {
-    setLoading(false);
-  }
-};
+    Alert.alert('Coming Soon', 'Google sign in will be available soon');
+  };
 
   const handleApple = async () => {
     try {
@@ -181,8 +177,29 @@ export default function Signup() {
                     />
                   )}
 
+                  {/* Email */}
+                  <Text style={styles.label}>Email</Text>
+                  <TextInput
+                    style={[
+                      styles.input,
+                      errors.email ? styles.inputError : null,
+                    ]}
+                    placeholder="Enter your email"
+                    placeholderTextColor="#999"
+                    value={email}
+                    onChangeText={(v) => {
+                      setEmail(v);
+                      setErrors((e) => ({ ...e, email: undefined }));
+                    }}
+                    autoCapitalize="none"
+                    keyboardType="email-address"
+                  />
+                  {errors.email ? (
+                    <Text style={styles.errorText}>{errors.email}</Text>
+                  ) : null}
+
                   {/* ── Username ── */}
-                  <Text style={styles.label}>{t("username")}</Text>
+                  <Text style={[styles.label, { marginTop: 12 }]}>{t("username")}</Text>
                   <TextInput
                     style={[
                       styles.input,
