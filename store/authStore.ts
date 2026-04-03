@@ -1,56 +1,45 @@
-import { supabase } from '@/lib/supabase/client';
-import { Session, User } from '@supabase/supabase-js';
+import apiClient, { setAuthToken } from '@/lib/axios/client';
 import { create } from 'zustand';
+
+type User = {
+  id: string;
+  email: string;
+  username: string;
+};
+
+type Session = {
+  access_token: string;
+  refresh_token: string;
+};
 
 type AuthState = {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  initialize: () => Promise<void>;
   signUp: (email: string, password: string, username: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
-  signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
-  initialize: () => Promise<void>;
 };
 
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   session: null,
   loading: true,
-
   initialize: async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    set({ session, user: session?.user ?? null, loading: false });
-    supabase.auth.onAuthStateChange((_event, session) => {
-      set({ session, user: session?.user ?? null });
-    });
+    set({ loading: false });
   },
-
   signUp: async (email, password, username) => {
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: { data: { user_name: username } },
-    });
-    if (error) throw error;
+    await apiClient.post('/users/register', { email, password, username });
   },
-
   signIn: async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-    set({ user: data.user, session: data.session });
+    const res = await apiClient.post('/users/login', { email, password });
+    const { user, session } = res.data;
+    setAuthToken(session.access_token);
+    set({ user, session });
   },
-
-  signInWithGoogle: async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: { redirectTo: 'skibag://auth/callback' },
-    });
-    if (error) throw error;
-  },
-
   signOut: async () => {
-    await supabase.auth.signOut();
+    setAuthToken(null);
     set({ user: null, session: null });
   },
 }));

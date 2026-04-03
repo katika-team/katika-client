@@ -1,7 +1,6 @@
 import { Games } from "@/constant/games";
 import { useTranslation } from "@/lib/i18n/I18nContext";
-import { supabase } from "@/lib/supabase/client";
-import { fontScale, hp, wp } from "@/lib/ui/responsive";
+import { fontScale, hp, wp } from '@/lib/ui/responsive';
 import { useAuthStore } from '@/store/authStore';
 import { Ionicons } from "@expo/vector-icons";
 import { Image } from "expo-image";
@@ -44,7 +43,7 @@ export default function Index() {
   const { user } = useAuthStore();
   const userData = {
     id: user?.id ?? '',
-    username: user?.user_metadata?.user_name ?? 'Player',
+    username: user?.username ?? 'Player',
     email: user?.email ?? '',
     rank: 'beginner',
     score: 0,
@@ -79,14 +78,8 @@ export default function Index() {
 
   // Listen for auth changes
   useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(() => {
-      console.log("Auth state changed, refetching user data...");
-      fetchUserData();
-    });
-
-    return () => subscription.unsubscribe();
+    // TODO: implement auth state listener when needed
+    console.log("Auth state listener - using new auth store");
   }, [fetchUserData]);
 
   // Get first letter of username for avatar

@@ -29,23 +29,16 @@ export default function Login() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
 
-  const { signIn, signInWithGoogle } = useAuthStore();
+  const { signIn } = useAuthStore();
 
   const handleGoogleSignIn = async () => {
-  try {
-    setLoading(true);
-    await signInWithGoogle();
-  } catch (e: any) {
-    Alert.alert(t('error'), t('google_signin_error'));
-  } finally {
-    setLoading(false);
-  }
-};
+    Alert.alert('Coming Soon', 'Google sign in will be available soon');
+  };
 
   const handleAppleSignIn = async () => {
     try {
@@ -60,13 +53,13 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
-  if (!username.trim() || !password) {
+  if (!email.trim() || !password) {
     Alert.alert(t('error'), 'Email and password required');
     return;
   }
   try {
     setLoginLoading(true);
-    await signIn(username.trim(), password);
+    await signIn(email.trim(), password);
     router.replace('/(tabs)');
   } catch (e: any) {
     Alert.alert(t('error'), e.message);
@@ -132,14 +125,15 @@ export default function Login() {
                   }}
                 >
                   {/* Username Label */}
-                  <Text style={styles.label}>{t("username")}</Text>
+                  <Text style={styles.label}>Email</Text>
                   <TextInput
                     style={styles.textInput}
-                    placeholder={t("username")}
+                    placeholder="Enter your email"
                     placeholderTextColor="#999"
-                    value={username}
-                    onChangeText={setUsername}
+                    value={email}
+                    onChangeText={setEmail}
                     autoCapitalize="none"
+                    keyboardType="email-address"
                   />
 
                   {/* Password Label */}
