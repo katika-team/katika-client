@@ -52,7 +52,8 @@
       "expo-video",
       "expo-dev-client",
       "expo-localization",
-      "react-native-bootsplash"
+      "react-native-bootsplash",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
