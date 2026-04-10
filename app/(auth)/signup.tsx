@@ -1,12 +1,11 @@
 import { useTranslation } from "@/lib/i18n/I18nContext";
 import { useAuthStore } from "@/store/authStore";
-import * as Google from "expo-auth-session/providers/google";
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
-import * as WebBrowser from "expo-web-browser";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -23,9 +22,10 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-WebBrowser.maybeCompleteAuthSession();
 const WEB_CLIENT_ID = "976625159463-jn3uqfcbvj5hsi6s82ekqfpovhi7ufmb.apps.googleusercontent.com";
 const ANDROID_CLIENT_ID = "976625159463-on82bpr2kub0f3v415ls0lv8lqae57ig.apps.googleusercontent.com";
+
+GoogleSignin.configure({ webClientId: WEB_CLIENT_ID });
 
 export default function Signup() {
   const { t } = useTranslation();
@@ -45,27 +45,20 @@ export default function Signup() {
 
   const { signUp, signInWithGoogle } = useAuthStore();
 
-const [request, response, promptAsync] = Google.useAuthRequest({
-  clientId: WEB_CLIENT_ID,
-  androidClientId: ANDROID_CLIENT_ID,
-  iosClientId: WEB_CLIENT_ID,
-  redirectUri: 'https://auth.expo.io/@jimhilary/skibag',
-});
-
-useEffect(() => {
-  if (response?.type === "success") {
-    const auth = response.authentication;
-    const id_token = auth?.idToken;
-    const access_token = auth?.accessToken;
-    if (id_token && access_token) {
+  const handleGoogle = async () => {
+    try {
       setLoading(true);
-      signInWithGoogle(id_token, access_token)
-        .then(() => router.replace("/(tabs)"))
-        .catch((e: any) => Alert.alert(t("error"), e.message))
-        .finally(() => setLoading(false));
+      await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signIn();
+      const { idToken } = await GoogleSignin.getTokens();
+      await signInWithGoogle(idToken, '');
+      router.replace('/(tabs)');
+    } catch (e: any) {
+      Alert.alert(t('error'), e.message);
+    } finally {
+      setLoading(false);
     }
-  }
-}, [response]);
+  };
 
   // Validation errors
   const [errors, setErrors] = useState<{
@@ -125,10 +118,7 @@ useEffect(() => {
     }
   };
 
-  const handleGoogle = () => {
-    promptAsync();
-  };
-
+  
   const handleApple = async () => {
     try {
       setLoading(true);
