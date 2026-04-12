@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = __DEV__ 
-  ? 'http://10.27.157.33:5000/api'
+  ? 'http://192.168.137.174:5000/api'
   : 'https://katika-server.onrender.com/api';
 
 const apiClient = axios.create({

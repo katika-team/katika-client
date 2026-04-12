@@ -6,13 +6,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import {
-    ImageBackground,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ImageBackground,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -46,7 +46,7 @@ export default function GameDetail() {
   }
 
   const handlePlay = () => {
-    console.log(`Playing ${game.name}`);
+    console.log(`Playing ${game.name}`); // game.name is string & when this line is true the user needs to be redirected to the loading screen of the game selected
   };
 
   return (
