@@ -52,16 +52,17 @@
       "expo-video",
       "expo-dev-client",
       "expo-localization",
-      "react-native-bootsplash",
-      "expo-web-browser",
-      "@react-native-google-signin/google-signin"
+      "react-native-bootsplash"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
     },
     "extra": {
-      "router": {}
+      "router": {},
+      "eas": {
+        "projectId": "4f06ef01-7d2b-4976-958c-01999462db87"
+      }
     },
     "owner": "skibags-organization"
   }
