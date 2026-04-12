@@ -1,5 +1,6 @@
 import { useTranslation } from "@/lib/i18n/I18nContext";
 import { useAuthStore } from "@/store/authStore";
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
@@ -21,6 +22,12 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+
+const WEB_CLIENT_ID = "976625159463-jn3uqfcbvj5hsi6s82ekqfpovhi7ufmb.apps.googleusercontent.com";
+const ANDROID_CLIENT_ID = "976625159463-on82bpr2kub0f3v415ls0lv8lqae57ig.apps.googleusercontent.com";
+
+GoogleSignin.configure({ webClientId: WEB_CLIENT_ID });
+
 export default function Login() {
   const { t } = useTranslation();
   const [fontsLoaded] = useFonts({
@@ -34,16 +41,26 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
 
-  const { signIn } = useAuthStore();
+  const { signIn, signInWithGoogle } = useAuthStore();
 
   const handleGoogleSignIn = async () => {
-    Alert.alert('Coming Soon', 'Google sign in will be available soon');
+    try {
+      setLoading(true);
+      await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signIn();
+      const { idToken } = await GoogleSignin.getTokens();
+      await signInWithGoogle(idToken, '');
+      router.replace('/(tabs)');
+    } catch (e: any) {
+      Alert.alert(t('error'), e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleAppleSignIn = async () => {
     try {
       setLoading(true);
-      // TODO: Implement Apple sign in when auth system is ready
       Alert.alert("Coming Soon", "Apple sign in will be available soon");
     } catch (error: any) {
       Alert.alert("Error", error.message || "Failed to sign in with Apple");
@@ -53,20 +70,20 @@ export default function Login() {
   };
 
   const handleLogin = async () => {
-  if (!email.trim() || !password) {
-    Alert.alert(t('error'), 'Email and password required');
-    return;
-  }
-  try {
-    setLoginLoading(true);
-    await signIn(email.trim(), password);
-    router.replace('/(tabs)');
-  } catch (e: any) {
-    Alert.alert(t('error'), e.message);
-  } finally {
-    setLoginLoading(false);
-  }
-};
+    if (!email.trim() || !password) {
+      Alert.alert(t("error"), "Email and password required");
+      return;
+    }
+    try {
+      setLoginLoading(true);
+      await signIn(email.trim(), password);
+      router.replace("/(tabs)");
+    } catch (e: any) {
+      Alert.alert(t("error"), e.message);
+    } finally {
+      setLoginLoading(false);
+    }
+  };
 
   return (
     <>
@@ -81,13 +98,11 @@ export default function Login() {
         style={{ flex: 1, width: "100%", height: "100%" }}
       >
         <LinearGradient
-          colors={
-            [
-              "rgba(255, 255, 255, 0)",
-              "rgba(37, 16, 104, 0.68)",
-              "rgba(0, 0, 7, 0.99)",
-            ] as const
-          }
+          colors={[
+            "rgba(255, 255, 255, 0)",
+            "rgba(37, 16, 104, 0.68)",
+            "rgba(0, 0, 7, 0.99)",
+          ] as const}
           start={{ x: 0.2, y: 0.3 }}
           end={{ x: 0.1, y: 1 }}
           style={{
@@ -124,7 +139,6 @@ export default function Login() {
                     paddingHorizontal: 25,
                   }}
                 >
-                  {/* Username Label */}
                   <Text style={styles.label}>Email</Text>
                   <TextInput
                     style={styles.textInput}
@@ -136,7 +150,6 @@ export default function Login() {
                     keyboardType="email-address"
                   />
 
-                  {/* Password Label */}
                   <Text style={[styles.label, { marginTop: 20 }]}>
                     {t("password")}
                   </Text>
@@ -166,7 +179,6 @@ export default function Login() {
                     </TouchableOpacity>
                   </View>
 
-                  {/* Login Button */}
                   <TouchableOpacity
                     style={styles.loginButton}
                     onPress={handleLogin}
@@ -186,14 +198,12 @@ export default function Login() {
                     </View>
                   </TouchableOpacity>
 
-                  {/* OR Divider */}
                   <View style={styles.orContainer}>
                     <View style={styles.line} />
                     <Text style={styles.orText}> OR </Text>
                     <View style={styles.line} />
                   </View>
 
-                  {/* Continue with Google */}
                   <TouchableOpacity
                     style={styles.socialButton}
                     onPress={handleGoogleSignIn}
@@ -220,7 +230,6 @@ export default function Login() {
                     </View>
                   </TouchableOpacity>
 
-                  {/* Continue with Apple - iOS only */}
                   {Platform.OS === "ios" && (
                     <TouchableOpacity
                       style={[styles.socialButton, { marginTop: 10 }]}
@@ -249,7 +258,6 @@ export default function Login() {
                     </TouchableOpacity>
                   )}
 
-                  {/* Sign up link */}
                   <View style={styles.signupContainer}>
                     <Text style={styles.signupText}>
                       {t("dont_have_account")}{" "}

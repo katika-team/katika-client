@@ -57,6 +57,7 @@
   "exclude": [
     "node_modules",
     "babel.config.js",
-    "metro.config.js"
+    "metro.config.js",
+    "node_modules/expo-auth-session/**"
   ]
 }
