@@ -72,5 +72,13 @@
     "sitemap": "^9.0.0",
     "typescript": "~5.9.2"
   },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": ["@notifee/react-native", "lottie-ios"],
+        "listUnknownPackages": false
+      }
+    }
+  },
   "private": true
 }
