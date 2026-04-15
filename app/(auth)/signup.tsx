@@ -22,10 +22,13 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const WEB_CLIENT_ID = "976625159463-jn3uqfcbvj5hsi6s82ekqfpovhi7ufmb.apps.googleusercontent.com";
+const WEB_CLIENT_ID = "976625159463-jn3ut04et7e5eijcovg4aveq9m3llugd.apps.googleusercontent.com";
 const ANDROID_CLIENT_ID = "976625159463-on82bpr2kub0f3v415ls0lv8lqae57ig.apps.googleusercontent.com";
 
-GoogleSignin.configure({ webClientId: WEB_CLIENT_ID });
+GoogleSignin.configure({ 
+  webClientId: WEB_CLIENT_ID,
+  forceCodeForRefreshToken: true,
+});
 
 export default function Signup() {
   const { t } = useTranslation();
@@ -49,6 +52,7 @@ export default function Signup() {
     try {
       setLoading(true);
       await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signOut(); // 
       await GoogleSignin.signIn();
       const { idToken } = await GoogleSignin.getTokens();
       await signInWithGoogle(idToken, '');
