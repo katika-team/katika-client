@@ -58,7 +58,16 @@ export default function Signup() {
       await signInWithGoogle(idToken, '');
       router.replace('/(tabs)');
     } catch (e: any) {
-      Alert.alert(t('error'), e.message);
+      const hint = e.response?.data?.hint;
+      if (hint === 'email') {
+        Alert.alert(
+          'Account Already Exists',
+          'This email is already registered with a password. Please login with your email and password instead.',
+          [{ text: 'OK' }]
+        );
+      } else {
+        Alert.alert(t('error'), e.response?.data?.error || e.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -116,7 +125,16 @@ export default function Signup() {
       await signUp(email.trim(), password, username);
       router.replace('/(tabs)');
     } catch (e: any) {
-      Alert.alert(t('error'), e.message || t('signup_error'));
+      const hint = e.response?.data?.hint;
+      if (hint === 'google') {
+        Alert.alert(
+          'Account Already Exists',
+          'This email is already linked to a Google account. Please use "Continue with Google" to sign in.',
+          [{ text: 'OK' }]
+        );
+      } else {
+        Alert.alert(t('error'), e.response?.data?.error || e.message || t('signup_error'));
+      }
     } finally {
       setSignupLoading(false);
     }
