@@ -26,6 +26,14 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+type AvatarType = {
+  id: number;
+  name: string;
+  image: any;
+  bgColor: string;
+  gradientColors: string[];
+};
+
 const { width, height } = Dimensions.get("window");
 
 // Rank image mapping
@@ -53,7 +61,10 @@ export default function Profile() {
   const { user, signOut } = useAuthStore();
   const userData = {
     id: user?.id ?? '',
-    username: user?.user_metadata?.user_name ?? 'Player',
+    username: user?.user_metadata?.user_name 
+  ?? user?.user_metadata?.full_name 
+  ?? user?.user_metadata?.name 
+  ?? 'Player',
     email: user?.email ?? '',
     avatarUri: null,
     rank: 'beginner',
@@ -63,9 +74,9 @@ export default function Profile() {
     referral_code: user?.user_metadata?.referral_code ?? '',
     avatar_url: null,
   };
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [selectedAvatar, setSelectedAvatar] = useState<AvatarType | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [tempSelectedAvatar, setTempSelectedAvatar] = useState(null);
+  const [tempSelectedAvatar, setTempSelectedAvatar] = useState<AvatarType | null>(null);
   const [imageError, setImageError] = useState(false);
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
@@ -77,7 +88,7 @@ export default function Profile() {
   const [userStats, setUserStats] = useState({
     referrals: 0,
     referralPoints: 0,
-    badges: 0,
+    badges: 0 as number,
   });
 
   // Load saved avatar from userData when it changes
@@ -108,15 +119,15 @@ export default function Profile() {
               savedAvatarId,
               "using default",
             );
-            setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID));
+            setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID) || null);
           }
         } else {
           console.log("avatar_id is not a number, using default");
-          setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID));
+          setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID) || null);
         }
       } else {
         console.log("No avatar ID found in userData, using default");
-        setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID));
+        setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID) || null);
       }
     };
 
@@ -134,7 +145,7 @@ export default function Profile() {
         setUserStats({
           referrals: 0,
           referralPoints: 0,
-          badges: [],
+          badges: 0,
         });
       } catch (error) {
         console.log("Error fetching user stats:", error);
@@ -205,7 +216,7 @@ export default function Profile() {
 
     setIsConverting(true);
     try {
-      const result = await Promise.resolve(); // TODO: implement convertReferralPointsToCoins when auth system is ready
+      const result = await Promise.resolve({ success: false, message: '', newCoins: 0 }); // TODO: implement convertReferralPointsToCoins when auth system is ready
 
       if (result.success) {
         // Update userData with new coins
@@ -288,7 +299,7 @@ export default function Profile() {
                     try {
                       setIsDeleting(true);
                       
-                      const result = await Promise.resolve(); // TODO: implement deleteUserAccount when auth system is ready
+                      const result = await Promise.resolve({ success: false, error: '' }); // TODO: implement deleteUserAccount when auth system is ready
                       
                       if (result.success) {
                         // Clear user data from context
@@ -402,7 +413,7 @@ export default function Profile() {
     }
   };
 
-  const getAvatarImageStyle = (avatar) => {
+  const getAvatarImageStyle = (avatar: AvatarType) => {
     const baseStyle = styles.avatarImage;
     if (avatar.id === 5 || avatar.id === 6 || avatar.id === 7) {
       return [baseStyle, styles.largeAvatarImage];
@@ -410,7 +421,7 @@ export default function Profile() {
     return baseStyle;
   };
 
-  const renderAvatarItem = ({ item }) => (
+  const renderAvatarItem = ({ item }: { item: AvatarType }) => (
     <TouchableOpacity
       style={[
         styles.avatarItem,
@@ -419,7 +430,7 @@ export default function Profile() {
       onPress={() => handleAvatarSelect(item)}
     >
       <LinearGradient
-        colors={item.gradientColors || [item.bgColor, item.bgColor]}
+        colors={(item.gradientColors as [string, string, ...string[]]) || [item.bgColor, item.bgColor]}
         style={styles.avatarGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -495,7 +506,7 @@ export default function Profile() {
             {/* Profile Card */}
             <LinearGradient
               colors={
-                selectedAvatar.gradientColors || [
+                (selectedAvatar.gradientColors as [string, string, ...string[]]) || [
                   selectedAvatar.bgColor,
                   selectedAvatar.bgColor,
                 ]
@@ -1188,10 +1199,10 @@ const styles = StyleSheet.create({
   },
   deleteButtonText: {
     color: "#FF4444",
-  },
+  } as any,
   logoutButtonText: {
     color: "#FF9800",
-  },
+  } as any,
   largeBottomPadding: {
     height: hp(10),
   },

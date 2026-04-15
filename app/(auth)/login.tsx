@@ -56,7 +56,16 @@ export default function Login() {
       await signInWithGoogle(idToken, '');
       router.replace('/(tabs)');
     } catch (e: any) {
-      Alert.alert(t('error'), e.message);
+      const hint = e.response?.data?.hint;
+      if (hint === 'email') {
+        Alert.alert(
+          'Account Already Exists',
+          'This email is already registered with a password. Please login with your email and password instead.',
+          [{ text: 'OK' }]
+        );
+      } else {
+        Alert.alert(t('error'), e.response?.data?.error || e.message);
+      }
     } finally {
       setLoading(false);
     }
