@@ -1,4 +1,5 @@
 import { Avatar } from "@/constant/Avatar";
+import apiClient from '@/lib/axios/client';
 import { hasSubmittedFeedbackToday, submitFeedback } from "@/lib/supabaseFeedbackService";
 import { hp, wp } from "@/lib/ui/responsive";
 import { useAuthStore } from '@/store/authStore';
@@ -16,13 +17,14 @@ import {
   Image,
   Modal,
   ScrollView,
+  Share,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -85,6 +87,7 @@ export default function Profile() {
   const [isConverting, setIsConverting] = useState(false);
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [referralCodeFromDB, setReferralCodeFromDB] = useState('');
   const [userStats, setUserStats] = useState({
     referrals: 0,
     referralPoints: 0,
@@ -138,25 +141,26 @@ export default function Profile() {
   useEffect(() => {
     const fetchUserStats = async () => {
       if (!userData?.id) return;
-
       try {
-        // TODO: implement when auth system is ready
-        console.log("Fetching user stats - using placeholder data");
+        const [codeRes, statsRes] = await Promise.all([
+          apiClient.get('/referral/my-code'),
+          apiClient.get('/referral/stats'),
+        ]);
+        setReferralCodeFromDB(codeRes.data.referral_code || '');
         setUserStats({
-          referrals: 0,
-          referralPoints: 0,
+          referrals: statsRes.data.total_invited || 0,
+          referralPoints: statsRes.data.total_earned || 0,
           badges: 0,
         });
       } catch (error) {
-        console.log("Error fetching user stats:", error);
+        console.log('Error fetching referral data:', error);
       }
     };
-
     fetchUserStats();
-  }, [userData]);
+  }, [userData?.id]);
 
   // Get referral code from userData
-  const referralCode = userData?.referral_code || "";
+  const referralCode = referralCodeFromDB || userData?.referral_code || "";
 
   // Debug logs
   useEffect(() => {
@@ -172,7 +176,7 @@ export default function Profile() {
     setModalVisible(true);
   };
 
-  const handleAvatarSelect = (avatar) => {
+  const handleAvatarSelect = (avatar: AvatarType) => {
     setTempSelectedAvatar(avatar);
   };
 
@@ -258,8 +262,15 @@ export default function Profile() {
   };
 
   const handleCopyCode = async () => {
-    await Clipboard.setStringAsync(referralCode);
-    Alert.alert("Success", "Referral code copied to clipboard!");
+    try {
+      await Share.share({
+        message: `Join me on Skibag! 🎮 Use my referral code ${referralCode} when signing up.\n\nDownload the app: https://play.google.com/store/apps/details?id=com.gameapp.tech`,
+        url: `skibag://signup?ref=${referralCode}`,
+      });
+    } catch (error) {
+      await Clipboard.setStringAsync(referralCode);
+      Alert.alert('Copied!', 'Referral code copied to clipboard!');
+    }
   };
 
   const handlePrivacyPolicy = () => {

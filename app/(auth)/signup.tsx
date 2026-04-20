@@ -1,11 +1,12 @@
+import apiClient from '@/lib/axios/client';
 import { useTranslation } from "@/lib/i18n/I18nContext";
-import { useAuthStore } from "@/store/authStore";
+import { useAuthStore } from '@/store/authStore';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useFonts } from "expo-font";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
-import React, { useState } from "react";
+import { router, useLocalSearchParams } from "expo-router";
+import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -47,6 +48,9 @@ export default function Signup() {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const { signUp, signInWithGoogle } = useAuthStore();
+  const { ref } = useLocalSearchParams<{ ref?: string }>();
+  useEffect(() => { if (ref) setReferralCode(ref.toUpperCase()); }, [ref]);
+
 
   const handleGoogle = async () => {
     try {
@@ -82,7 +86,7 @@ export default function Signup() {
     referralCode?: string;
   }>({});
 
-  const [fontsLoaded] = useFonts({
+  useFonts({
     "Poppins-Bold": require("@/assets/fonts/Poppins-Bold.ttf"),
     "Montserrat-Regular": require("@/assets/fonts/Montserrat-Regular.ttf"),
   });
@@ -123,6 +127,17 @@ export default function Signup() {
       setSignupLoading(true);
       // Create email from username since no email field exists
       await signUp(email.trim(), password, username);
+      // Apply referral code if entered
+      if (referralCode.trim()) {
+        try {
+          await apiClient.post('/referral/apply', { 
+            referral_code: referralCode.trim() 
+          });
+        } catch (refErr: any) {
+          // Don't block signup if referral fails
+          console.log('Referral apply failed:', refErr.message);
+        }
+      }
       router.replace('/(tabs)');
     } catch (e: any) {
       const hint = e.response?.data?.hint;
@@ -388,7 +403,7 @@ export default function Signup() {
                       setErrors((e) => ({ ...e, referralCode: undefined }));
                     }}
                     autoCapitalize="characters"
-                    maxLength={8}
+                    maxLength={12}
                   />
                   {errors.referralCode ? (
                     <Text style={styles.errorText}>{errors.referralCode}</Text>
