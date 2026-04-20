@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const BASE_URL = __DEV__ 
-  ? 'http://10.167.23.33:5000/api'
-  : 'http://10.167.23.33:5000/api';
+  ? 'http://10.217.129.33:5000/api'
+  : 'http://10.217.129.33:5000/api';
 
 const apiClient = axios.create({
   baseURL: BASE_URL,
