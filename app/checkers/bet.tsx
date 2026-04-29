@@ -140,7 +140,9 @@ export default function Bet() {
             <SearchModal
                 visible={searchVisible}
                 onClose={() => setSearchVisible(false)}
-                nextRoute="/main"
+                nextRoute="/checkers/main"
+                mode="session"
+                betAmount="1000 XAF"
             />
 
         </ImageBackground>
