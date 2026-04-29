@@ -1,16 +1,18 @@
 import { useRouter } from 'expo-router'
 import React, { useState } from 'react'
-import { Alert, Image, ImageBackground, Text, View } from 'react-native'
+import { Alert, Image, ImageBackground, Text, TouchableOpacity, View } from 'react-native'
 import Btn from './components/btn'
 import Modal from './components/Modal'
 import Players from './components/players'
 import Scores from './components/scores'
 import SettingsModal from './components/SettingsModal'
+import SearchModal from '../component/Searchmodal'
 
 export default function index() {
   const router = useRouter();
   const [modalVisible, setModalVisible] = useState(false);
   const [settingsVisible, setSettingsVisible] = useState(false);
+  const [searchVisible, setSearchVisible] = useState(false);
   const [modalType, setModalType] = useState<'back' | 'hint'>('back');
 
   const handleBackPress = () => {
@@ -91,8 +93,34 @@ export default function index() {
     </View>
 
     {/* game board */}
-    <View style={{width:'100%',height:'43%'}}>
+    <View style={{width:'100%',height:'43%', position: 'relative'}}>
       <Image source={require('@/assets/ttt/board.png')} style={{width:'100%', height:'100%'}} resizeMode='contain'/>
+      
+      {/* Play Live Button Overlay */}
+      <TouchableOpacity
+        onPress={() => setSearchVisible(true)}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: [{ translateX: -75 }, { translateY: -25 }],
+          backgroundColor: 'rgba(76, 175, 80, 0.9)',
+          paddingHorizontal: 20,
+          paddingVertical: 12,
+          borderRadius: 25,
+          borderWidth: 2,
+          borderColor: '#4CAF50'
+        }}
+      >
+        <Text style={{
+          color: 'white',
+          fontSize: 16,
+          fontWeight: 'bold',
+          textAlign: 'center'
+        }}>
+          🎮 Play Live
+        </Text>
+      </TouchableOpacity>
     </View>
 
     <View style={{top:22, paddingHorizontal:10}}>
@@ -123,6 +151,13 @@ export default function index() {
     <SettingsModal
       visible={settingsVisible}
       onClose={handleSettingsClose}
+    />
+
+    <SearchModal
+      visible={searchVisible}
+      onClose={() => setSearchVisible(false)}
+      nextRoute="/TTT/main"
+      mode="session"
     />
     
   </ImageBackground>

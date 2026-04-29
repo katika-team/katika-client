@@ -56,7 +56,7 @@ export default function SearchModal({
         body: JSON.stringify({
           userId: 'player1',
           userName: 'Player',
-          game: 'checkers',
+          game: mode === 'session' && nextRoute.includes('TTT') ? 'tictactoe' : 'checkers',
           matchType: 'bot'
         })
       });

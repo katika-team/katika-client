@@ -1,10 +1,11 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { useSession, useSocket } from '@beta-gamer/react-native';
 
-interface Piece { player: 'red' | 'black'; type: 'man' | 'king'; }
-interface Move { from: number; to: number; captures?: number[]; }
+type Player = 'X' | 'O';
+type Cell = Player | null;
+type Board = Cell[];
 
-export function useCheckersGame() {
+export function useTictactoeGame() {
   const socket = useSocket();
   const session = useSession();
   const myPlayer = session.players[0];
@@ -12,12 +13,9 @@ export function useCheckersGame() {
 
   const [roomId, setRoomId] = useState<string | null>(null);
   const [myPlayerId, setMyPlayerId] = useState(tokenPlayerId);
-  const [myColor, setMyColor] = useState<'red' | 'black'>('red');
-  const [board, setBoard] = useState<(Piece | null)[]>(Array(64).fill(null));
+  const [mySymbol, setMySymbol] = useState<Player>('X');
+  const [board, setBoard] = useState<Board>(Array(9).fill(null));
   const [currentTurn, setCurrentTurn] = useState<number>(0);
-  const [selectedPiece, setSelectedPiece] = useState<number | null>(null);
-  const [validMoves, setValidMoves] = useState<Move[]>([]);
-  const [lastMove, setLastMove] = useState<{ from: number; to: number } | null>(null);
   const [players, setPlayers] = useState<any[]>([]);
   const [gameOver, setGameOver] = useState(false);
   const [gameResult, setGameResult] = useState<{ winner: string | null; reason: string } | null>(null);
@@ -26,7 +24,7 @@ export function useCheckersGame() {
   const afkCountdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const roomIdRef = useRef<string | null>(null);
 
-  const isMyTurn = myPlayerId ? (currentTurn === 0 ? myColor === 'red' : myColor === 'black') : false;
+  const isMyTurn = players.length > 0 && players[currentTurn]?.id === myPlayerId;
 
   useEffect(() => {
     if (!socket) return;
@@ -42,23 +40,23 @@ export function useCheckersGame() {
     else socket.once('connect', join);
 
     socket.on('game:started', (d: any) => {
+      console.log('Game started event:', d);
       setRoomId(d.roomId);
       roomIdRef.current = d.roomId;
       setMyPlayerId(d.playerId);
-      setMyColor(d.color);
-      setBoard(d.board);
+      setMySymbol(d.symbol || 'X');
+      setBoard(d.board || Array(9).fill(null));
       setCurrentTurn(d.currentTurn ?? 0);
       setPlayers(d.players || []);
     });
 
     socket.on('game:move:made', (d: any) => {
-      setBoard(d.board);
-      setCurrentTurn(d.currentTurn ?? 0);
-      setSelectedPiece(null);
-      setValidMoves([]);
-      if (d.move) {
-        setLastMove({ from: d.move.from, to: d.move.to });
+      console.log('Move made received:', d);
+      if (d.board) {
+        console.log('Updating board to:', d.board);
+        setBoard(d.board);
       }
+      setCurrentTurn(d.currentTurn ?? 0);
       setAfkWarning(null);
       if (afkCountdownRef.current) {
         clearInterval(afkCountdownRef.current);
@@ -66,7 +64,7 @@ export function useCheckersGame() {
       }
     });
 
-    socket.on('checkers:afk_warning', (d: { playerId: string; secondsRemaining: number }) => {
+    socket.on('tictactoe:afk_warning', (d: { playerId: string; secondsRemaining: number }) => {
       setAfkWarning(d);
       if (afkCountdownRef.current) clearInterval(afkCountdownRef.current);
       afkCountdownRef.current = setInterval(() => {
@@ -81,7 +79,7 @@ export function useCheckersGame() {
       }, 1000);
     });
 
-    socket.on('checkers:afk_warning_cleared', () => {
+    socket.on('tictactoe:afk_warning_cleared', () => {
       if (afkCountdownRef.current) {
         clearInterval(afkCountdownRef.current);
         afkCountdownRef.current = null;
@@ -89,62 +87,75 @@ export function useCheckersGame() {
       setAfkWarning(null);
     });
 
-    socket.on('game:valid_moves', (d: { position: number; moves: Move[] }) => {
-      setSelectedPiece(d.position);
-      setValidMoves(d.moves);
-    });
-
     socket.on('game:over', (d: { winner?: string; reason: string }) => {
+      console.log('Game over event:', d);
       const result = { winner: d.winner ?? null, reason: d.reason };
       setGameResult(result);
       setTimeout(() => setGameOver(true), 400);
     });
 
+    // Listen for any socket events to debug
+    const originalEmit = socket.emit;
+    const originalOn = socket.on;
+    
+    socket.on = function(event: string, callback: any) {
+      console.log('Listening for event:', event);
+      return originalOn.call(this, event, (...args: any[]) => {
+        console.log('Received event:', event, args);
+        return callback(...args);
+      });
+    };
+
     return () => {
       socket.off('connect', join);
       socket.off('game:started');
       socket.off('game:move:made');
-      socket.off('checkers:afk_warning');
-      socket.off('checkers:afk_warning_cleared');
-      socket.off('game:valid_moves');
+      socket.off('tictactoe:afk_warning');
+      socket.off('tictactoe:afk_warning_cleared');
       socket.off('game:over');
       if (afkCountdownRef.current) clearInterval(afkCountdownRef.current);
     };
   }, [socket, myPlayer?.displayName, tokenPlayerId]);
 
   const handleCellPress = useCallback((position: number) => {
-    if (!socket || !roomId || !myPlayerId || gameOver || !isMyTurn) return;
-
-    // If a valid move destination is clicked, execute the move
-    const move = validMoves.find(m => m.to === position);
-    if (move) {
-      socket.emit('game:move', { roomId, playerId: myPlayerId, move });
-      setSelectedPiece(null);
-      setValidMoves([]);
+    console.log('handleCellPress called:', {
+      position,
+      socket: !!socket,
+      roomId,
+      myPlayerId,
+      gameOver,
+      isMyTurn,
+      boardCell: board[position]
+    });
+    
+    if (!socket || !roomId || !myPlayerId || gameOver || !isMyTurn || board[position]) {
+      console.log('Move blocked:', {
+        noSocket: !socket,
+        noRoomId: !roomId,
+        noPlayerId: !myPlayerId,
+        gameOver,
+        notMyTurn: !isMyTurn,
+        cellOccupied: !!board[position]
+      });
       return;
     }
 
-    // Otherwise request valid moves for this piece
-    const piece = board[position];
-    if (piece && piece.player === myColor) {
-      socket.emit('game:get_moves', { roomId, position, playerId: myPlayerId });
-    } else {
-      setSelectedPiece(null);
-      setValidMoves([]);
-    }
-  }, [socket, roomId, myPlayerId, gameOver, isMyTurn, validMoves, board, myColor]);
+    console.log('Emitting move:', { roomId, playerId: myPlayerId, position });
+    socket.emit('game:move', { 
+      roomId, 
+      playerId: myPlayerId, 
+      position
+    });
+  }, [socket, roomId, myPlayerId, gameOver, isMyTurn, board, mySymbol]);
 
   return {
     socket,
     roomId,
     myPlayerId,
-    myColor,
+    mySymbol,
     board,
     currentTurn,
     players,
-    selectedPiece,
-    validMoves,
-    lastMove,
     gameOver,
     gameResult,
     afkWarning,
