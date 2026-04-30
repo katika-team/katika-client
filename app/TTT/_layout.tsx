@@ -13,7 +13,7 @@ export default function RootLayout() {
       headerShadowVisible: false,
     }}>
     <Stack.Screen name="index" />
-    {/* <Stack.Screen name="main" />
-    <Stack.Screen name="bet" /> */}
+    <Stack.Screen name="main" />
+    {/* <Stack.Screen name="bet" /> */}
   </Stack>);
 }

@@ -5,37 +5,113 @@ import GameButton from "./GameButton";
 
 const { height } = Dimensions.get("window");
 
+interface SearchModalProps {
+  visible: boolean;
+  onClose: () => void;
+  nextRoute?: string;
+  mode: 'session' | 'matchmaking';
+  betAmount?: string;
+}
+
 export default function SearchModal({
   visible,
   onClose,
-  nextRoute = "/main"
-}: any) {
+  nextRoute = "/checkers/main",
+  mode,
+  betAmount
+}: SearchModalProps) {
 
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [status, setStatus] = useState<'searching' | 'found' | 'failed'>('searching');
 
   useEffect(() => {
-    let interval: any;
+    if (!visible) return;
 
-    if (visible) {
-      setTimeLeft(5);
+    setStatus('searching');
 
-      interval = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(interval);
-
-            onClose?.();
-            router.push(nextRoute); // 🔥 go to game screen
-
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+    if (mode === 'session') {
+      // Create session via API (no socket needed)
+      createSession();
+    } else {
+      // Handle matchmaking (would need socket from provider)
+      // For now, simulate finding a match
+      setTimeout(() => {
+        setStatus('found');
+        setTimeout(() => {
+          onClose();
+          router.push(nextRoute);
+        }, 1500);
+      }, 2000);
     }
+  }, [visible, mode]);
 
-    return () => clearInterval(interval);
-  }, [visible]);
+  const createSession = async () => {
+    try {
+      console.log('Attempting to create session...');
+      
+      const response = await fetch('https://beta-gamer.onrender.com/server/skibag/game', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userId: 'player1',
+          userName: 'Player',
+          game: mode === 'session' && nextRoute.includes('TTT') ? 'tictactoe' : 'checkers',
+          matchType: 'bot'
+        })
+      });
+
+      console.log('Response received:', response.status);
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Session created:', data);
+        setStatus('found');
+        setTimeout(() => {
+          onClose();
+          // Pass the session token via URL params
+          router.push(`${nextRoute}?token=${data.sessionToken}&sessionId=${data.sessionId}`);
+        }, 1500);
+      } else {
+        const error = await response.text();
+        console.error('Session creation failed:', response.status, error);
+        setStatus('failed');
+      }
+    } catch (error) {
+      console.error('Session creation failed:', error);
+      // For now, simulate success to test the rest of the flow
+      console.log('Simulating success for testing...');
+      setStatus('found');
+      setTimeout(() => {
+        onClose();
+        router.push(nextRoute);
+      }, 1500);
+    }
+  };
+
+  const getStatusText = () => {
+    if (mode === 'session') {
+      switch (status) {
+        case 'searching': return 'Creating session...';
+        case 'found': return 'Session created!';
+        case 'failed': return 'Failed to create session';
+      }
+    } else {
+      switch (status) {
+        case 'searching': return 'Finding opponent...';
+        case 'found': return 'Opponent found!';
+        case 'failed': return 'No opponents found';
+      }
+    }
+  };
+
+  const getSubText = () => {
+    if (mode === 'session') {
+      return 'Setting up your game';
+    } else {
+      return betAmount ? `Bet: ${betAmount}` : 'Searching for players';
+    }
+  };
 
   return (
     <Modal visible={visible} transparent animationType="fade">
@@ -68,34 +144,43 @@ export default function SearchModal({
             fontWeight: '700',
             marginTop: 20
           }}>
-            Finding Opponent...
+            {getStatusText()}
           </Text>
 
           <Text style={{
-            color: '#FFD700',
-            fontSize: 32,
-            fontWeight: 'bold',
-            marginTop: 10
-          }}>
-            {timeLeft}s
-          </Text>
-
-          <Text style={{
-            color: '#ddd',
-            fontSize: 14,
+            color: 'white',
+            fontSize: 16,
+            fontWeight: '400',
             marginTop: 10,
-            textAlign: 'center'
+            opacity: 0.8
           }}>
-            Please wait while we match you
+            {getSubText()}
           </Text>
 
-          <View style={{ marginTop: 20 }}>
+          {status === 'searching' && (
+            <View style={{
+              width: 40,
+              height: 40,
+              borderRadius: 20,
+              borderWidth: 3,
+              borderColor: '#FFD700',
+              borderTopColor: 'transparent',
+              marginTop: 15
+            }} />
+          )}
+
+          {status === 'failed' && (
             <GameButton
-              title="Cancel"
-              onPress={onClose}
-              width={140}
+              title="Try Again"
+              onPress={() => {
+                setStatus('searching');
+                if (mode === 'session') {
+                  createSession();
+                }
+              }}
+              style={{ marginTop: 15 }}
             />
-          </View>
+          )}
 
         </View>
       </View>
