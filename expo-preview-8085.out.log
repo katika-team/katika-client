@@ -1,0 +1,454 @@
+
+> rentspot@1.0.0 web
+> expo start --web --port 8085 --host localhost --clear
+
+Starting project at C:\Users\Evil\Pictures\rentspot
+React Compiler enabled
+Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+Waiting on http://localhost:8085
+Logs for your project will appear below.
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ node_modules\expo-router\node\render.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ node_modules\expo-router\node\render.js ░░░░░░░░░░░░░░░░  1.0% (1/1)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 34.0% ( 7/12)
+λ node_modules\expo-router\node\render.js ▓░░░░░░░░░░░░░░░  6.9% ( 41/199)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 34.0% ( 7/12)
+λ node_modules\expo-router\node\render.js ▓░░░░░░░░░░░░░░░ 12.1% ( 82/240)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 34.0% (25/45)
+λ node_modules\expo-router\node\render.js ▓▓▓▓░░░░░░░░░░░░ 25.4% (202/401)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 34.0% (25/45)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓░░░░░░░░░░░ 36.2% (311/517)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 34.0% (108/232)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓░░░░░░░░ 54.5% (435/589)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓░░░░░░░░░░░ 34.0% (170/309)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓░░░░░ 73.6% (549/640)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓░░░░░░░░░ 47.1% (241/351)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 83.4% (642/705)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓░░░░░░░░ 51.1% (328/467)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 86.5% (700/757)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓░░░░░░░░ 55.9% (411/572)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 87.4% (729/780)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 68.1% (567/690)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 90.0% (817/875)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 91.2% (735/787)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 97.2% (903/916)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (887/887)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.8% (937/938)
+λ Bundled 47167ms node_modules\expo-router\node\render.js (938 modules)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (887/887)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (887/887)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 167ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 55493ms node_modules\expo-router\entry.js (887 modules)
+Web Bundled 2492ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ▓▓▓▓░░░░░░░░░░░░ 25.0% ( 38/144)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 57.1% (290/422)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 59.0% (388/505)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 79.1% (605/683)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 84.4% (688/776)
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 94.4% (848/873)
+Web Bundled 21212ms node_modules\expo-router\entry.js (888 modules)
+λ Bundled 247ms node_modules\expo-router\node\render.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+ LOG  [web] Logs will appear in the browser console
+Web Bundled 3188ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 126ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1116ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 64ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 200ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1956ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 99ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 107ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 46ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 2318ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 1094ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 78ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 105ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 2557ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 86ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 81ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 123ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1846ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 988ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 51ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+ ERROR  SyntaxError: C:\Users\Evil\Pictures\rentspot\app\hooks\useTictactoeGame.ts: Unexpected token (95:6)
+
+  93 |       setGameResult(result);
+  94 |       setTimeout(() => setGameOver(true), 400);
+> 95 |       >
+     |       ^
+  96 |     });
+  97 |
+  98 |     // Listen for any socket events to debug
+    at constructor (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:365:19)
+    at TypeScriptParserMixin.raise (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6599:19)
+    at TypeScriptParserMixin.unexpected (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6619:16)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11442:22)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at TypeScriptParserMixin.parseExpressionBase (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10784:23)
+    at C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10780:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12421:16)
+    at TypeScriptParserMixin.parseExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10780:17)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12895:23)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9508:18)
+    at TypeScriptParserMixin.parseStatementLike (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12767:17)
+    at TypeScriptParserMixin.parseStatementListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12747:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13316:61)
+    at TypeScriptParserMixin.parseBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13309:10)
+    at TypeScriptParserMixin.parseBlock (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13297:10)
+    at TypeScriptParserMixin.parseFunctionBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12100:24)
+    at TypeScriptParserMixin.parseArrowExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12075:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11687:12)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11331:23)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12426:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12493:17)
+    at TypeScriptParserMixin.parseExprListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12175:18)
+    at TypeScriptParserMixin.parseCallExpressionArguments (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11252:22)
+    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11186:29)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11120:19)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9272:18)
+    at TypeScriptParserMixin.parseSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11094:19)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11085:17)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+ ERROR  SyntaxError: C:\Users\Evil\Pictures\rentspot\app\hooks\useTictactoeGame.ts: Expecting Unicode escape sequence \uXXXX. (95:7)
+
+  93 |       setGameResult(result);
+  94 |       setTimeout(() => setGameOver(true), 400);
+> 95 |       \
+     |        ^
+  96 |     });
+  97 |
+  98 |     // Listen for any socket events to debug
+    at constructor (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:365:19)
+    at TypeScriptParserMixin.raise (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6599:19)
+    at TypeScriptParserMixin.readWord1 (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6559:16)
+    at TypeScriptParserMixin.readWord (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6579:23)
+    at TypeScriptParserMixin.getTokenFromCode (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6298:14)
+    at TypeScriptParserMixin.getTokenFromCode (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9987:11)
+    at TypeScriptParserMixin.nextToken (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:5782:10)
+    at TypeScriptParserMixin.next (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:5692:10)
+    at TypeScriptParserMixin.eat (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:5696:12)
+    at TypeScriptParserMixin.isLineTerminator (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6891:17)
+    at TypeScriptParserMixin.semicolon (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6894:25)
+    at TypeScriptParserMixin.parseExpressionStatement (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13285:10)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12899:19)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9508:18)
+    at TypeScriptParserMixin.parseStatementLike (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12767:17)
+    at TypeScriptParserMixin.parseStatementListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12747:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13316:61)
+    at TypeScriptParserMixin.parseBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13309:10)
+    at TypeScriptParserMixin.parseBlock (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13297:10)
+    at TypeScriptParserMixin.parseFunctionBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12100:24)
+    at TypeScriptParserMixin.parseArrowExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12075:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11687:12)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11331:23)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12426:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12493:17)
+    at TypeScriptParserMixin.parseExprListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12175:18)
+    at TypeScriptParserMixin.parseCallExpressionArguments (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11252:22)
+    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11186:29)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11120:19)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9272:18)
+    at TypeScriptParserMixin.parseSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11094:19)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11085:17)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+ ERROR  SyntaxError: C:\Users\Evil\Pictures\rentspot\app\hooks\useTictactoeGame.ts: Unexpected character '¬'. (95:6)
+
+  93 |       setGameResult(result);
+  94 |       setTimeout(() => setGameOver(true), 400);
+> 95 |       ¬
+     |       ^
+  96 |     });
+  97 |
+  98 |     // Listen for any socket events to debug
+    at constructor (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:365:19)
+    at TypeScriptParserMixin.raise (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6599:19)
+    at TypeScriptParserMixin.getTokenFromCode (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6306:16)
+    at TypeScriptParserMixin.getTokenFromCode (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9987:11)
+    at TypeScriptParserMixin.nextToken (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:5782:10)
+    at TypeScriptParserMixin.next (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:5692:10)
+    at TypeScriptParserMixin.eat (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:5696:12)
+    at TypeScriptParserMixin.isLineTerminator (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6891:17)
+    at TypeScriptParserMixin.semicolon (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6894:25)
+    at TypeScriptParserMixin.parseExpressionStatement (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13285:10)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12899:19)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9508:18)
+    at TypeScriptParserMixin.parseStatementLike (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12767:17)
+    at TypeScriptParserMixin.parseStatementListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12747:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13316:61)
+    at TypeScriptParserMixin.parseBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13309:10)
+    at TypeScriptParserMixin.parseBlock (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13297:10)
+    at TypeScriptParserMixin.parseFunctionBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12100:24)
+    at TypeScriptParserMixin.parseArrowExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12075:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11687:12)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11331:23)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12426:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12493:17)
+    at TypeScriptParserMixin.parseExprListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12175:18)
+    at TypeScriptParserMixin.parseCallExpressionArguments (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11252:22)
+    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11186:29)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11120:19)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9272:18)
+    at TypeScriptParserMixin.parseSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11094:19)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11085:17)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at TypeScriptParserMixin.parseExpressionBase (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10784:23)
+ ERROR  SyntaxError: C:\Users\Evil\Pictures\rentspot\app\hooks\useTictactoeGame.ts: Unterminated regular expression. (95:7)
+
+  93 |       setGameResult(result);
+  94 |       setTimeout(() => setGameOver(true), 400);
+> 95 |       /
+     |        ^
+  96 |     });
+  97 |
+  98 |     // Listen for any socket events to debug
+    at constructor (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:365:19)
+    at TypeScriptParserMixin.raise (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6599:19)
+    at TypeScriptParserMixin.readRegexp (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:6328:20)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11313:16)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at TypeScriptParserMixin.parseExpressionBase (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10784:23)
+    at C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10780:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12421:16)
+    at TypeScriptParserMixin.parseExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10780:17)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12895:23)
+    at TypeScriptParserMixin.parseStatementContent (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9508:18)
+    at TypeScriptParserMixin.parseStatementLike (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12767:17)
+    at TypeScriptParserMixin.parseStatementListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12747:17)
+    at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13316:61)
+    at TypeScriptParserMixin.parseBlockBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13309:10)
+    at TypeScriptParserMixin.parseBlock (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:13297:10)
+    at TypeScriptParserMixin.parseFunctionBody (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12100:24)
+    at TypeScriptParserMixin.parseArrowExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12075:10)
+    at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11687:12)
+    at TypeScriptParserMixin.parseExprAtom (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11331:23)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11081:23)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9837:18)
+    at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10899:61)
+    at TypeScriptParserMixin.parseExprOps (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10904:23)
+    at TypeScriptParserMixin.parseMaybeConditional (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10881:23)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10831:21)
+    at TypeScriptParserMixin.parseMaybeAssign (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9786:20)
+    at C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:39
+    at TypeScriptParserMixin.allowInAnd (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12426:12)
+    at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:10800:17)
+    at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12493:17)
+    at TypeScriptParserMixin.parseExprListItem (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:12175:18)
+    at TypeScriptParserMixin.parseCallExpressionArguments (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11252:22)
+    at TypeScriptParserMixin.parseCoverCallAndAsyncArrowHead (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11186:29)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11120:19)
+    at TypeScriptParserMixin.parseSubscript (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:9272:18)
+    at TypeScriptParserMixin.parseSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11094:19)
+    at TypeScriptParserMixin.parseExprSubscripts (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11085:17)
+    at TypeScriptParserMixin.parseUpdate (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11066:21)
+    at TypeScriptParserMixin.parseMaybeUnary (C:\Users\Evil\Pictures\rentspot\node_modules\@babel\parser\lib\index.js:11046:23)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundling failed 819ms node_modules\expo-router\node\render.js (1 module)
+
+Metro error: Unable to resolve module ./assets/ttt/bg.png from C:\Users\Evil\Pictures\rentspot\app\TTT\home.tsx: 
+
+None of these files exist:
+  * bg.png
+  * app\TTT\assets\ttt\bg.png
+[0m [90m 238 |[39m   [36mreturn[39m (
+ [90m 239 |[39m     [33m<[39m[33mImageBackground[39m
+[31m[1m>[22m[39m[90m 240 |[39m       source[33m=[39m{require([32m'./assets/ttt/bg.png'[39m)}
+ [90m     |[39m                        [31m[1m^[22m[39m
+ [90m 241 |[39m       style[33m=[39m{styles[33m.[39mbg}
+ [90m 242 |[39m       resizeMode[33m=[39m[32m"cover"[39m
+ [90m 243 |[39m     [33m>[39m[0m
+
+Import stack:
+
+ app\TTT\home.tsx
+ | import "./assets/ttt/bg.png"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (app\TTT\home.tsx)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundling failed 1483ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\_error.js ▓▓▓▓▓▓▓▓▓░░░░░░░ 59.8% (157/203)
+Web node_modules\expo-router\_error.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 98.2% (320/323)
+Web Bundled 7127ms node_modules\expo-router\_error.js (323 modules)
+ LOG  [web] Logs will appear in the browser console
+λ Bundling failed 22ms node_modules\expo-router\node\render.js (1 module)
+Web Bundling failed 38ms node_modules\expo-router\entry.js (1 module)
+
+Metro error: Unable to resolve module ./assets/ttt/bg.png from C:\Users\Evil\Pictures\rentspot\app\TTT\home.tsx: 
+
+None of these files exist:
+  * bg.png
+  * app\TTT\assets\ttt\bg.png
+[0m [90m 238 |[39m   [36mreturn[39m (
+ [90m 239 |[39m     [33m<[39m[33mImageBackground[39m
+[31m[1m>[22m[39m[90m 240 |[39m       source[33m=[39m{require([32m'./assets/ttt/bg.png'[39m)}
+ [90m     |[39m                        [31m[1m^[22m[39m
+ [90m 241 |[39m       style[33m=[39m{styles[33m.[39mbg}
+ [90m 242 |[39m       resizeMode[33m=[39m[32m"cover"[39m
+ [90m 243 |[39m     [33m>[39m[0m
+
+Import stack:
+
+ app\TTT\home.tsx
+ | import "./assets/ttt/bg.png"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (app\TTT\home.tsx)
+Web Bundling failed 20ms node_modules\expo-router\entry.js (1 module)
+λ Bundling failed 37ms node_modules\expo-router\node\render.js (1 module)
+
+Metro error: Unable to resolve module ./assets/ttt/bg.png from C:\Users\Evil\Pictures\rentspot\app\TTT\home.tsx: 
+
+None of these files exist:
+  * bg.png
+  * app\TTT\assets\ttt\bg.png
+[0m [90m 238 |[39m   [36mreturn[39m (
+ [90m 239 |[39m     [33m<[39m[33mImageBackground[39m
+[31m[1m>[22m[39m[90m 240 |[39m       source[33m=[39m{require([32m'./assets/ttt/bg.png'[39m)}
+ [90m     |[39m                        [31m[1m^[22m[39m
+ [90m 241 |[39m       style[33m=[39m{styles[33m.[39mbg}
+ [90m 242 |[39m       resizeMode[33m=[39m[32m"cover"[39m
+ [90m 243 |[39m     [33m>[39m[0m
+
+Import stack:
+
+ app\TTT\home.tsx
+ | import "./assets/ttt/bg.png"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (app\TTT\home.tsx)
+Web Bundled 31ms node_modules\expo-router\_error.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 108ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 2647ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 365ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 59ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 62ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1630ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 853ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 46ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 231ms node_modules\expo-router\node\render.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 3967ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 417ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 87ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 237ms node_modules\expo-router\node\render.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 2872ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 1424ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 74ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 150ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1091ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 71ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 659ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1001ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 107ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 87ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 67ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 2245ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 1249ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 57ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console

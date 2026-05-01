@@ -13,8 +13,10 @@ export default function RootLayout() {
         headerShadowVisible: false,
       }}>
       <Stack.Screen name="index" />
+      <Stack.Screen name="control" />
       <Stack.Screen name="(tabs)" />
       <Stack.Screen name="checkers" />
+      <Stack.Screen name="TTT" />
     </Stack>
   );
 }

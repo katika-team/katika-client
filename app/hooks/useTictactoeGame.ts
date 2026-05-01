@@ -92,6 +92,7 @@ export function useTictactoeGame() {
       const result = { winner: d.winner ?? null, reason: d.reason };
       setGameResult(result);
       setTimeout(() => setGameOver(true), 400);
+      // gameover
     });
 
     // Listen for any socket events to debug

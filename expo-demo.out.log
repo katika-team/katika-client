@@ -1,0 +1,442 @@
+Starting project at C:\Users\Evil\Pictures\rentspot
+React Compiler enabled
+Starting Metro Bundler
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 96.3% (788/803)
+λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.8% (833/834)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ node_modules\expo-router\node\render.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 2512ms node_modules\expo-router\node\render.js (834 modules)
+λ Bundled 2569ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 5275ms node_modules\expo-router\entry.js (803 modules)
+Web Bundled 5288ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 444ms node_modules\expo-router\entry.js (698 modules)
+λ Bundled 37ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web Bundled 551ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 45ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 467ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 43ms node_modules\expo-router\entry.js (1 module)
+λ Bundled 49ms node_modules\expo-router\node\render.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 55ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 1719ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 941ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 71ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 38ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 778ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 41ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 466ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 90ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 60ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 438ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 52ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 184ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 736ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 114ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 36ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 416ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 38ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 29ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 365ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 75ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 29ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 386ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 61ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 28ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 379ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 36ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 37ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 407ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 64ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 32ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 372ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 29ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 27ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 396ms node_modules\expo-router\entry.js (1 module)
+Web Bundled 34ms node_modules\expo-router\entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 46ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 527ms node_modules\expo-router\entry.js (1 module)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 36ms node_modules\expo-router\node\render.js (1 module)
+Web Bundled 821ms node_modules\expo-router\entry.js (1 module)
+Unable to resolve "@beta-gamer/react-native" from "app\components\SessionProvider.tsx"
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBetaGamerProvider[39m } [36mfrom[39m [32m"@beta-gamer/react-native"[39m[33m;[39m
+ [90m   |[39m                                    [31m[1m^[22m[39m
+ [90m 3 |[39m [36mimport[39m { useLocalSearchParams } [36mfrom[39m [32m"expo-router"[39m[33m;[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36minterface[39m [33mSessionProviderProps[39m {[0m
+
+Import stack:
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native" from "app\components\SessionProvider.tsx"
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBetaGamerProvider[39m } [36mfrom[39m [32m"@beta-gamer/react-native"[39m[33m;[39m
+ [90m   |[39m                                    [31m[1m^[22m[39m
+ [90m 3 |[39m [36mimport[39m { useLocalSearchParams } [36mfrom[39m [32m"expo-router"[39m[33m;[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36minterface[39m [33mSessionProviderProps[39m {[0m
+
+Import stack:
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native" from "app\components\SessionProvider.tsx"
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBetaGamerProvider[39m } [36mfrom[39m [32m"@beta-gamer/react-native"[39m[33m;[39m
+ [90m   |[39m                                    [31m[1m^[22m[39m
+ [90m 3 |[39m [36mimport[39m { useLocalSearchParams } [36mfrom[39m [32m"expo-router"[39m[33m;[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36minterface[39m [33mSessionProviderProps[39m {[0m
+
+Import stack:
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native" from "app\components\SessionProvider.tsx"
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBetaGamerProvider[39m } [36mfrom[39m [32m"@beta-gamer/react-native"[39m[33m;[39m
+ [90m   |[39m                                    [31m[1m^[22m[39m
+ [90m 3 |[39m [36mimport[39m { useLocalSearchParams } [36mfrom[39m [32m"expo-router"[39m[33m;[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36minterface[39m [33mSessionProviderProps[39m {[0m
+
+Import stack:
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native" from "app\components\SessionProvider.tsx"
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBetaGamerProvider[39m } [36mfrom[39m [32m"@beta-gamer/react-native"[39m[33m;[39m
+ [90m   |[39m                                    [31m[1m^[22m[39m
+ [90m 3 |[39m [36mimport[39m { useLocalSearchParams } [36mfrom[39m [32m"expo-router"[39m[33m;[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36minterface[39m [33mSessionProviderProps[39m {[0m
+
+Import stack:
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native" from "app\components\SessionProvider.tsx"
+[0m [90m 1 |[39m [36mimport[39m [33mReact[39m [36mfrom[39m [32m"react"[39m[33m;[39m
+[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mBetaGamerProvider[39m } [36mfrom[39m [32m"@beta-gamer/react-native"[39m[33m;[39m
+ [90m   |[39m                                    [31m[1m^[22m[39m
+ [90m 3 |[39m [36mimport[39m { useLocalSearchParams } [36mfrom[39m [32m"expo-router"[39m[33m;[39m
+ [90m 4 |[39m
+ [90m 5 |[39m [36minterface[39m [33mSessionProviderProps[39m {[0m
+
+Import stack:
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native-chess" from "node_modules\@beta-gamer\react-native\dist\index.mjs"
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native-chess" from "node_modules\@beta-gamer\react-native\dist\index.mjs"
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Unable to resolve "@beta-gamer/react-native-chess" from "node_modules\@beta-gamer\react-native\dist\index.mjs"
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ node_modules\expo-router\node\render.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundling failed 3602ms node_modules\expo-router\entry.js (1 module)
+λ Bundling failed 3663ms node_modules\expo-router\node\render.js (1 module)
+
+Metro error: Unable to resolve module @beta-gamer/react-native-chess from C:\Users\Evil\Pictures\rentspot\node_modules\@beta-gamer\react-native\dist\index.mjs: @beta-gamer/react-native-chess could not be found within the project or in these directories:
+  node_modules
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (node_modules\@beta-gamer\react-native\dist\index.mjs)
+Web node_modules\expo-router\_error.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 81.8% (208/230)
+Web node_modules\expo-router\_error.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (322/323)
+Web Bundled 7140ms node_modules\expo-router\_error.js (323 modules)
+ LOG  [web] Logs will appear in the browser console
+Web Bundling failed 1509ms node_modules\expo-router\entry.js (1 module)
+Web Bundling failed 474ms node_modules\expo-router\entry.js (1 module)
+λ Bundling failed 1521ms node_modules\expo-router\node\render.js (1 module)
+λ Bundling failed 484ms node_modules\expo-router\node\render.js (1 module)
+
+Metro error: Unable to resolve module @beta-gamer/react-native-chess from C:\Users\Evil\Pictures\rentspot\node_modules\@beta-gamer\react-native\dist\index.mjs: @beta-gamer/react-native-chess could not be found within the project or in these directories:
+  node_modules
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (node_modules\@beta-gamer\react-native\dist\index.mjs)
+
+Metro error: Unable to resolve module @beta-gamer/react-native-chess from C:\Users\Evil\Pictures\rentspot\node_modules\@beta-gamer\react-native\dist\index.mjs: @beta-gamer/react-native-chess could not be found within the project or in these directories:
+  node_modules
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (node_modules\@beta-gamer\react-native\dist\index.mjs)
+Web Bundled 21ms node_modules\expo-router\_error.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundling failed 1202ms node_modules\expo-router\entry.js (1 module)
+λ Bundling failed 1218ms node_modules\expo-router\node\render.js (1 module)
+
+Metro error: Unable to resolve module @beta-gamer/react-native-chess from C:\Users\Evil\Pictures\rentspot\node_modules\@beta-gamer\react-native\dist\index.mjs: @beta-gamer/react-native-chess could not be found within the project or in these directories:
+  node_modules
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (node_modules\@beta-gamer\react-native\dist\index.mjs)
+Web Bundled 19ms node_modules\expo-router\_error.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundling failed 1016ms node_modules\expo-router\node\render.js (1 module)
+Web Bundling failed 1025ms node_modules\expo-router\entry.js (1 module)
+
+Metro error: Unable to resolve module @beta-gamer/react-native-chess from C:\Users\Evil\Pictures\rentspot\node_modules\@beta-gamer\react-native\dist\index.mjs: @beta-gamer/react-native-chess could not be found within the project or in these directories:
+  node_modules
+[0m [90m 408 |[39m
+ [90m 409 |[39m [90m// src/index.ts[39m
+[31m[1m>[22m[39m[90m 410 |[39m [36mimport[39m { useChessGame[33m,[39m [33mChessBoard[39m[33m,[39m [33mChessMoveHistory[39m } [36mfrom[39m [32m"@beta-gamer/react-native-chess"[39m[33m;[39m
+ [90m     |[39m                                                             [31m[1m^[22m[39m
+ [90m 411 |[39m [36mimport[39m { useCheckersGame[33m,[39m [33mCheckersBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-checkers"[39m[33m;[39m
+ [90m 412 |[39m [36mimport[39m { useConnect4Game[33m,[39m [33mConnect4Board[39m } [36mfrom[39m [32m"@beta-gamer/react-native-connect4"[39m[33m;[39m
+ [90m 413 |[39m [36mimport[39m { useTictactoeGame[33m,[39m [33mTictactoeBoard[39m } [36mfrom[39m [32m"@beta-gamer/react-native-tictactoe"[39m[33m;[39m[0m
+
+Import stack:
+
+ node_modules\@beta-gamer\react-native\dist\index.mjs
+ | import "@beta-gamer/react-native-chess"
+
+ app\components\SessionProvider.tsx
+ | import "@beta-gamer/react-native"
+
+ app\checkers\main.tsx
+ | import "../components/SessionProvider"
+
+ app (require.context)
+
+
+Call Stack
+  <unknown> (node_modules\@beta-gamer\react-native\dist\index.mjs)

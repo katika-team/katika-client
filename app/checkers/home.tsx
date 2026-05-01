@@ -1,8 +1,6 @@
 import { router } from "expo-router";
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import { ImageBackground } from "react-native";
-import { Dimensions } from "react-native";
+import { Dimensions, Image, ImageBackground, Text, TouchableOpacity, View } from "react-native";
 
 const {height} = Dimensions.get('window')
 export default function Home(){

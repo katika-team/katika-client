@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Modal, View, Text, Image, Dimensions } from "react-native";
-import { router } from "expo-router";
-import GameButton from "./GameButton";
-
-const { height } = Dimensions.get("window");
-
+import { ActivityIndicator, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Href, router } from "expo-router";
 interface SearchModalProps {
   visible: boolean;
   onClose: () => void;
@@ -23,6 +19,16 @@ export default function SearchModal({
 
   const [status, setStatus] = useState<'searching' | 'found' | 'failed'>('searching');
 
+  const pushRoute = (params: Record<string, string | number | undefined> = {}) => {
+    const query = Object.entries(params)
+      .filter(([, value]) => value !== undefined && value !== '')
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
+      .join('&');
+
+    const route = query ? `${nextRoute}${nextRoute.includes('?') ? '&' : '?'}${query}` : nextRoute;
+    router.push(route as Href);
+  };
+
   useEffect(() => {
     if (!visible) return;
 
@@ -38,7 +44,7 @@ export default function SearchModal({
         setStatus('found');
         setTimeout(() => {
           onClose();
-          router.push(nextRoute);
+          pushRoute({ stake: betAmount });
         }, 1500);
       }, 2000);
     }
@@ -69,8 +75,11 @@ export default function SearchModal({
         setStatus('found');
         setTimeout(() => {
           onClose();
-          // Pass the session token via URL params
-          router.push(`${nextRoute}?token=${data.sessionToken}&sessionId=${data.sessionId}`);
+          pushRoute({
+            token: data.sessionToken,
+            sessionId: data.sessionId,
+            stake: betAmount
+          });
         }, 1500);
       } else {
         const error = await response.text();
@@ -84,7 +93,7 @@ export default function SearchModal({
       setStatus('found');
       setTimeout(() => {
         onClose();
-        router.push(nextRoute);
+        pushRoute({ stake: betAmount });
       }, 1500);
     }
   };
@@ -106,80 +115,56 @@ export default function SearchModal({
   };
 
   const getSubText = () => {
+    if (betAmount) {
+      return `${Number(betAmount).toLocaleString()} COINS`;
+    }
+
     if (mode === 'session') {
       return 'Setting up your game';
     } else {
-      return betAmount ? `Bet: ${betAmount}` : 'Searching for players';
+      return 'Searching for players';
     }
   };
 
   return (
     <Modal visible={visible} transparent animationType="fade">
-      <View style={{
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.6)',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
+      <View style={styles.backdrop}>
+        <View style={styles.panel}>
+          <View style={styles.glow} />
+          <View style={[styles.corner, styles.cornerTL]} />
+          <View style={[styles.corner, styles.cornerTR]} />
+          <View style={[styles.corner, styles.cornerBL]} />
+          <View style={[styles.corner, styles.cornerBR]} />
 
-        <View style={{
-          width: '90%',
-          height: height * 0.25,
-          alignItems: 'center'
-        }}>
-
-          <Image
-            source={require('@/assets/checkers/btn.png')}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              resizeMode: 'stretch'
-            }}
-          />
-
-          <Text style={{
-            color: 'white',
-            fontSize: 22,
-            fontWeight: '700',
-            marginTop: 20
-          }}>
+          <Text style={styles.eyebrow}>TIC TAC TOE</Text>
+          <Text style={styles.title}>
             {getStatusText()}
           </Text>
 
-          <Text style={{
-            color: 'white',
-            fontSize: 16,
-            fontWeight: '400',
-            marginTop: 10,
-            opacity: 0.8
-          }}>
+          <View style={styles.divider} />
+
+          <Text style={styles.subText}>
             {getSubText()}
           </Text>
 
           {status === 'searching' && (
-            <View style={{
-              width: 40,
-              height: 40,
-              borderRadius: 20,
-              borderWidth: 3,
-              borderColor: '#FFD700',
-              borderTopColor: 'transparent',
-              marginTop: 15
-            }} />
+            <View style={styles.loaderWrap}>
+              <ActivityIndicator color="#ffffff" size="large" />
+            </View>
           )}
 
           {status === 'failed' && (
-            <GameButton
-              title="Try Again"
+            <Pressable
               onPress={() => {
                 setStatus('searching');
                 if (mode === 'session') {
                   createSession();
                 }
               }}
-              style={{ marginTop: 15 }}
-            />
+              style={styles.retryButton}
+            >
+              <Text style={styles.retryText}>TRY AGAIN</Text>
+            </Pressable>
           )}
 
         </View>
@@ -187,3 +172,139 @@ export default function SearchModal({
     </Modal>
   );
 }
+
+const styles = StyleSheet.create({
+  backdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(2,6,22,0.72)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+
+  panel: {
+    width: '100%',
+    maxWidth: 380,
+    minHeight: 238,
+    borderRadius: 6,
+    borderWidth: 1.5,
+    borderColor: 'rgba(120,180,255,0.85)',
+    backgroundColor: 'rgba(10,28,86,0.9)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 28,
+    overflow: 'hidden',
+    shadowColor: '#4080ff',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.55,
+    shadowRadius: 24,
+    elevation: 16,
+  },
+
+  glow: {
+    position: 'absolute',
+    top: -80,
+    width: 240,
+    height: 160,
+    borderRadius: 120,
+    backgroundColor: 'rgba(70,130,255,0.22)',
+  },
+
+  eyebrow: {
+    color: 'rgba(150,195,255,0.65)',
+    fontSize: 11,
+    letterSpacing: 4,
+    fontWeight: '800',
+    marginBottom: 8,
+  },
+
+  title: {
+    color: '#ffffff',
+    fontSize: 22,
+    fontWeight: '900',
+    letterSpacing: 1.5,
+    textAlign: 'center',
+    textShadowColor: 'rgba(80,160,255,0.85)',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 16,
+  },
+
+  divider: {
+    width: 56,
+    height: 2,
+    borderRadius: 1,
+    backgroundColor: 'rgba(100,160,255,0.55)',
+    marginTop: 16,
+    marginBottom: 14,
+  },
+
+  subText: {
+    color: '#6ab0ff',
+    fontSize: 13,
+    fontWeight: '800',
+    letterSpacing: 2,
+    textAlign: 'center',
+  },
+
+  loaderWrap: {
+    width: 54,
+    height: 54,
+    borderRadius: 27,
+    borderWidth: 1.5,
+    borderColor: 'rgba(120,180,255,0.45)',
+    backgroundColor: 'rgba(45,105,250,0.4)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 22,
+  },
+
+  retryButton: {
+    height: 48,
+    minWidth: 156,
+    borderRadius: 6,
+    borderWidth: 1.5,
+    borderColor: 'rgba(120,180,255,0.9)',
+    backgroundColor: 'rgba(45,105,250,0.72)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 22,
+  },
+
+  retryText: {
+    color: '#ffffff',
+    fontSize: 12,
+    fontWeight: '900',
+    letterSpacing: 3,
+  },
+
+  corner: { position: 'absolute', width: 12, height: 12 },
+  cornerTL: {
+    top: 0,
+    left: 0,
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderColor: 'rgba(180,215,255,0.9)',
+  },
+  cornerTR: {
+    top: 0,
+    right: 0,
+    borderTopWidth: 2,
+    borderRightWidth: 2,
+    borderColor: 'rgba(180,215,255,0.9)',
+  },
+  cornerBL: {
+    bottom: 0,
+    left: 0,
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    borderColor: 'rgba(180,215,255,0.9)',
+  },
+  cornerBR: {
+    bottom: 0,
+    right: 0,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderColor: 'rgba(180,215,255,0.9)',
+  },
+});

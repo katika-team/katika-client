@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, Dimensions } from 'react-native';
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const { width } = Dimensions.get('window');
 const boardSize = width * 0.8;
@@ -85,14 +85,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   board: {
-    backgroundColor: '#2a2a2a',
+    backgroundColor: 'rgba(10,28,86,0.92)',
     borderRadius: 12,
-    padding: 8,
-    elevation: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
+    padding: 12,
+    elevation: 20,
+    shadowColor: '#4080ff',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.6,
+    shadowRadius: 24,
+    borderWidth: 2,
+    borderColor: 'rgba(120,180,255,0.6)',
   },
   row: {
     flexDirection: 'row',
@@ -101,25 +103,34 @@ const styles = StyleSheet.create({
     width: cellSize,
     height: cellSize,
     margin: 4,
-    backgroundColor: '#1a1a1a',
+    backgroundColor: 'rgba(8,18,58,0.7)',
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#444',
+    borderWidth: 1.5,
+    borderColor: 'rgba(120,180,255,0.35)',
   },
   winningCell: {
-    backgroundColor: '#4CAF50',
-    borderColor: '#2E7D32',
+    backgroundColor: 'rgba(45,105,250,0.7)',
+    borderColor: 'rgba(120,180,255,0.9)',
+    shadowColor: '#4080ff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    shadowRadius: 16,
+    elevation: 12,
   },
   cellText: {
-    fontSize: cellSize * 0.4,
-    fontWeight: 'bold',
+    fontSize: cellSize * 0.45,
+    fontWeight: '900',
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 12,
   },
   xText: {
-    color: '#FF5722',
+    color: '#ff6b9d',
+    textShadowColor: 'rgba(255,107,157,0.8)',
   },
   oText: {
-    color: '#2196F3',
+    color: '#6ab0ff',
+    textShadowColor: 'rgba(106,176,255,0.8)',
   },
 });
