@@ -1,4 +1,5 @@
 import { Avatar } from "@/constant/Avatar";
+import apiClient from '@/lib/axios/client';
 import { hasSubmittedFeedbackToday, submitFeedback } from "@/lib/supabaseFeedbackService";
 import { hp, wp } from "@/lib/ui/responsive";
 import { useAuthStore } from '@/store/authStore';
@@ -16,15 +17,24 @@ import {
   Image,
   Modal,
   ScrollView,
+  Share,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+type AvatarType = {
+  id: number;
+  name: string;
+  image: any;
+  bgColor: string;
+  gradientColors: string[];
+};
 
 const { width, height } = Dimensions.get("window");
 
@@ -53,7 +63,10 @@ export default function Profile() {
   const { user, signOut } = useAuthStore();
   const userData = {
     id: user?.id ?? '',
-    username: user?.user_metadata?.user_name ?? 'Player',
+    username: user?.user_metadata?.user_name 
+  ?? user?.user_metadata?.full_name 
+  ?? user?.user_metadata?.name 
+  ?? 'Player',
     email: user?.email ?? '',
     avatarUri: null,
     rank: 'beginner',
@@ -63,9 +76,9 @@ export default function Profile() {
     referral_code: user?.user_metadata?.referral_code ?? '',
     avatar_url: null,
   };
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
+  const [selectedAvatar, setSelectedAvatar] = useState<AvatarType | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const [tempSelectedAvatar, setTempSelectedAvatar] = useState(null);
+  const [tempSelectedAvatar, setTempSelectedAvatar] = useState<AvatarType | null>(null);
   const [imageError, setImageError] = useState(false);
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
@@ -74,10 +87,11 @@ export default function Profile() {
   const [isConverting, setIsConverting] = useState(false);
   const [isSubmittingFeedback, setIsSubmittingFeedback] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [referralCodeFromDB, setReferralCodeFromDB] = useState('');
   const [userStats, setUserStats] = useState({
     referrals: 0,
     referralPoints: 0,
-    badges: 0,
+    badges: 0 as number,
   });
 
   // Load saved avatar from userData when it changes
@@ -108,15 +122,15 @@ export default function Profile() {
               savedAvatarId,
               "using default",
             );
-            setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID));
+            setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID) || null);
           }
         } else {
           console.log("avatar_id is not a number, using default");
-          setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID));
+          setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID) || null);
         }
       } else {
         console.log("No avatar ID found in userData, using default");
-        setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID));
+        setSelectedAvatar(Avatar.find((a) => a.id === DEFAULT_AVATAR_ID) || null);
       }
     };
 
@@ -127,25 +141,26 @@ export default function Profile() {
   useEffect(() => {
     const fetchUserStats = async () => {
       if (!userData?.id) return;
-
       try {
-        // TODO: implement when auth system is ready
-        console.log("Fetching user stats - using placeholder data");
+        const [codeRes, statsRes] = await Promise.all([
+          apiClient.get('/referral/my-code'),
+          apiClient.get('/referral/stats'),
+        ]);
+        setReferralCodeFromDB(codeRes.data.referral_code || '');
         setUserStats({
-          referrals: 0,
-          referralPoints: 0,
-          badges: [],
+          referrals: statsRes.data.total_invited || 0,
+          referralPoints: statsRes.data.total_earned || 0,
+          badges: 0,
         });
       } catch (error) {
-        console.log("Error fetching user stats:", error);
+        console.log('Error fetching referral data:', error);
       }
     };
-
     fetchUserStats();
-  }, [userData]);
+  }, [userData?.id]);
 
   // Get referral code from userData
-  const referralCode = userData?.referral_code || "";
+  const referralCode = referralCodeFromDB || userData?.referral_code || "";
 
   // Debug logs
   useEffect(() => {
@@ -161,7 +176,7 @@ export default function Profile() {
     setModalVisible(true);
   };
 
-  const handleAvatarSelect = (avatar) => {
+  const handleAvatarSelect = (avatar: AvatarType) => {
     setTempSelectedAvatar(avatar);
   };
 
@@ -205,7 +220,7 @@ export default function Profile() {
 
     setIsConverting(true);
     try {
-      const result = await Promise.resolve(); // TODO: implement convertReferralPointsToCoins when auth system is ready
+      const result = await Promise.resolve({ success: false, message: '', newCoins: 0 }); // TODO: implement convertReferralPointsToCoins when auth system is ready
 
       if (result.success) {
         // Update userData with new coins
@@ -247,8 +262,15 @@ export default function Profile() {
   };
 
   const handleCopyCode = async () => {
-    await Clipboard.setStringAsync(referralCode);
-    Alert.alert("Success", "Referral code copied to clipboard!");
+    try {
+      await Share.share({
+        message: `Join me on Skibag! 🎮 Use my referral code ${referralCode} when signing up.\n\nDownload the app: https://play.google.com/store/apps/details?id=com.gameapp.tech`,
+        url: `skibag://signup?ref=${referralCode}`,
+      });
+    } catch (error) {
+      await Clipboard.setStringAsync(referralCode);
+      Alert.alert('Copied!', 'Referral code copied to clipboard!');
+    }
   };
 
   const handlePrivacyPolicy = () => {
@@ -288,7 +310,7 @@ export default function Profile() {
                     try {
                       setIsDeleting(true);
                       
-                      const result = await Promise.resolve(); // TODO: implement deleteUserAccount when auth system is ready
+                      const result = await Promise.resolve({ success: false, error: '' }); // TODO: implement deleteUserAccount when auth system is ready
                       
                       if (result.success) {
                         // Clear user data from context
@@ -402,7 +424,7 @@ export default function Profile() {
     }
   };
 
-  const getAvatarImageStyle = (avatar) => {
+  const getAvatarImageStyle = (avatar: AvatarType) => {
     const baseStyle = styles.avatarImage;
     if (avatar.id === 5 || avatar.id === 6 || avatar.id === 7) {
       return [baseStyle, styles.largeAvatarImage];
@@ -410,7 +432,7 @@ export default function Profile() {
     return baseStyle;
   };
 
-  const renderAvatarItem = ({ item }) => (
+  const renderAvatarItem = ({ item }: { item: AvatarType }) => (
     <TouchableOpacity
       style={[
         styles.avatarItem,
@@ -419,7 +441,7 @@ export default function Profile() {
       onPress={() => handleAvatarSelect(item)}
     >
       <LinearGradient
-        colors={item.gradientColors || [item.bgColor, item.bgColor]}
+        colors={(item.gradientColors as [string, string, ...string[]]) || [item.bgColor, item.bgColor]}
         style={styles.avatarGradient}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
@@ -495,7 +517,7 @@ export default function Profile() {
             {/* Profile Card */}
             <LinearGradient
               colors={
-                selectedAvatar.gradientColors || [
+                (selectedAvatar.gradientColors as [string, string, ...string[]]) || [
                   selectedAvatar.bgColor,
                   selectedAvatar.bgColor,
                 ]
@@ -1188,10 +1210,10 @@ const styles = StyleSheet.create({
   },
   deleteButtonText: {
     color: "#FF4444",
-  },
+  } as any,
   logoutButtonText: {
     color: "#FF9800",
-  },
+  } as any,
   largeBottomPadding: {
     height: hp(10),
   },

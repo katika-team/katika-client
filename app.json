@@ -13,6 +13,9 @@
       "bundleIdentifier": "com.gameapp.tech",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
       }
     },
     "android": {
@@ -24,11 +27,20 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "navigationBarColor": "#000000",
-      "navigationBarDarkConfig": {
-        "backgroundColor": "#000000"
-      },
-      "package": "com.gameapp.tech"
+      "package": "com.gameapp.tech",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "skibag"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ],
+      "runtimeVersion": "1.0.0"
     },
     "web": {
       "output": "static",
@@ -52,7 +64,9 @@
       "expo-video",
       "expo-dev-client",
       "expo-localization",
-      "react-native-bootsplash"
+      "react-native-bootsplash",
+      "expo-web-browser",
+      "@react-native-google-signin/google-signin"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -61,9 +75,12 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "4f06ef01-7d2b-4976-958c-01999462db87"
+        "projectId": "f88841c7-dfef-4d84-a0e2-021a375b7c18"
       }
     },
-    "owner": "skibags-organization"
+    "owner": "gaming_app",
+    "updates": {
+      "url": "https://u.expo.dev/f88841c7-dfef-4d84-a0e2-021a375b7c18"
+    }
   }
 }
