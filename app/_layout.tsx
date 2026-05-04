@@ -18,6 +18,7 @@ export default function RootLayout() {
       <Stack.Screen name="checkers" />
       <Stack.Screen name="TTT" />
       <Stack.Screen name="connect4" />
+      <Stack.Screen name="chkobe" />
     </Stack>
   );
 }

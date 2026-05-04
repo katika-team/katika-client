@@ -62,7 +62,8 @@ export default function SearchModal({
         body: JSON.stringify({
           userId: 'player1',
           userName: 'Player',
-          game: mode === 'session' && nextRoute.includes('connect4') ? 'connect4' : 
+          game: mode === 'session' && nextRoute.includes('chkobe') ? 'chkobe' :
+                mode === 'session' && nextRoute.includes('connect4') ? 'connect4' : 
                 mode === 'session' && nextRoute.includes('TTT') ? 'tictactoe' : 'checkers',
           matchType: 'bot'
         })

@@ -69,9 +69,30 @@ export default function Control() {
         </TouchableOpacity>
         
         <TouchableOpacity
-          onPress={() => router.push('/connect4')}
+          onPress={() => router.push('/connect4/home')}
           style={{
             backgroundColor: '#1565C0',
+            paddingHorizontal: 40,
+            paddingVertical: 15,
+            borderRadius: 10,
+            marginBottom: 15,
+            width: '100%'
+          }}
+        >
+          <Text style={{
+            color: 'white',
+            fontSize: 18,
+            fontWeight: 'bold',
+            textAlign: 'center'
+          }}>
+            🔴🟡 Connect 4
+          </Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          onPress={() => router.push('/chkobe')}
+          style={{
+            backgroundColor: '#8E24AA',
             paddingHorizontal: 40,
             paddingVertical: 15,
             borderRadius: 10,
@@ -84,7 +105,7 @@ export default function Control() {
             fontWeight: 'bold',
             textAlign: 'center'
           }}>
-            🔴🟡 Connect 4
+            🃏 Chkobe
           </Text>
         </TouchableOpacity>
       </View>
