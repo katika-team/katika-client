@@ -54,6 +54,7 @@ export default function Control() {
             paddingHorizontal: 40,
             paddingVertical: 15,
             borderRadius: 10,
+            marginBottom: 15,
             width: '100%'
           }}
         >
@@ -64,6 +65,26 @@ export default function Control() {
             textAlign: 'center'
           }}>
             ⭕ Tic Tac Toe
+          </Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          onPress={() => router.push('/connect4')}
+          style={{
+            backgroundColor: '#1565C0',
+            paddingHorizontal: 40,
+            paddingVertical: 15,
+            borderRadius: 10,
+            width: '100%'
+          }}
+        >
+          <Text style={{
+            color: 'white',
+            fontSize: 18,
+            fontWeight: 'bold',
+            textAlign: 'center'
+          }}>
+            🔴🟡 Connect 4
           </Text>
         </TouchableOpacity>
       </View>

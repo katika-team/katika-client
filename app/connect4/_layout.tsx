@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-export default function RootLayout() {
+export default function Connect4Layout() {
   return (
     <Stack 
       screenOptions={{
@@ -13,11 +13,7 @@ export default function RootLayout() {
         headerShadowVisible: false,
       }}>
       <Stack.Screen name="index" />
-      <Stack.Screen name="control" />
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="checkers" />
-      <Stack.Screen name="TTT" />
-      <Stack.Screen name="connect4" />
+      <Stack.Screen name="main" />
     </Stack>
   );
 }

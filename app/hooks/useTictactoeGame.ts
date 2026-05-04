@@ -162,6 +162,11 @@ export function useTictactoeGame() {
     afkWarning,
     isMyTurn,
     handleCellPress,
-    gameState: gameOver ? 'ended' : 'playing'
+    gameState: gameOver ? 'ended' : 'playing',
+    resetGame: () => {
+      setGameOver(false);
+      setGameResult(null);
+      setBoard(Array(9).fill(null));
+    }
   };
 }

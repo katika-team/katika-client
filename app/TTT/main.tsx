@@ -15,6 +15,7 @@ function TictactoeGame() {
     gameOver,
     gameResult,
     myPlayerId,
+    resetGame
   } = useTictactoeGame();
 
   // Modal states
@@ -198,7 +199,7 @@ function TictactoeGame() {
               width: '100%',
             }}>
               <TouchableOpacity
-                onPress={() => router.replace('/TTT/stake')}
+                onPress={() => { resetGame(); router.replace('/TTT/stake'); }}
                 style={{
                   flex: 1,
                   minHeight: 56,
@@ -226,7 +227,7 @@ function TictactoeGame() {
               </TouchableOpacity>
               
               <TouchableOpacity
-                onPress={() => router.replace('/TTT/home')}
+                onPress={() => { resetGame(); router.replace('/TTT/home')}}
                 style={{
                   flex: 1,
                   minHeight: 56,

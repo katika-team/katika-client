@@ -18,7 +18,8 @@ function CheckersGame() {
     handleCellPress,
     gameOver,
     gameResult,
-    myPlayerId
+    myPlayerId,
+    resetGame
   } = useCheckersGame();
 
   // Custom Checkers Game Over Modal
@@ -74,7 +75,10 @@ function CheckersGame() {
               zIndex: 1
             }}>
               <TouchableOpacity
-                onPress={() => router.push('/checkers/bet')}
+                onPress={() => {
+                  resetGame();
+                  router.push('/checkers/bet');
+                }}
                 style={{
                   backgroundColor: 'rgba(255, 16, 16, 1)',
                   paddingHorizontal: 25,
@@ -88,7 +92,10 @@ function CheckersGame() {
               </TouchableOpacity>
               
               <TouchableOpacity
-                onPress={() => router.push('/checkers/home')}
+                onPress={() => {
+                  resetGame();
+                  router.push('/checkers/home');
+                }}
                 style={{
                   backgroundColor: 'rgba(100, 100, 100, 0.8)',
                   paddingHorizontal: 25,
